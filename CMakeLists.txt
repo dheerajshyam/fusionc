@@ -3,4 +3,4 @@ project(fusionc)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(fusionc main.cpp)
+add_executable(fusionc fusionc.cpp)
