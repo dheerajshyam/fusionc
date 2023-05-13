@@ -213,6 +213,15 @@ CMAKE_STRIP:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/Xcode
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a file.
+PYTHON_INCLUDE_DIR:PATH=/Library/Frameworks/Python.framework/Versions/3.10/include/python3.10
+
+//Path to a library.
+PYTHON_LIBRARY:FILEPATH=/Library/Frameworks/Python.framework/Versions/3.10/lib/libpython3.10.dylib
+
+//Path to a library.
+PYTHON_LIBRARY_DEBUG:FILEPATH=PYTHON_LIBRARY_DEBUG-NOTFOUND
+
 //Value Computed by CMake
 fusionc_BINARY_DIR:STATIC=/Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debug
 
@@ -358,4 +367,12 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PythonLibs
+FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/Library/Frameworks/Python.framework/Versions/3.10/lib/libpython3.10.dylib][/Library/Frameworks/Python.framework/Versions/3.10/include/python3.10][v3.10.5()]
+//ADVANCED property for variable: PYTHON_INCLUDE_DIR
+PYTHON_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_LIBRARY
+PYTHON_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_LIBRARY_DEBUG
+PYTHON_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 

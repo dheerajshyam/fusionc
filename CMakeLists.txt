@@ -11,5 +11,9 @@ set_target_properties(antlr4-runtime PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES "${ANTLR4_CPP_RUNTIME_DIR}/include/antlr4-runtime"
 )
 
-add_executable(fusionc fusionc.cpp)
+add_executable(fusionc fusionc.cpp PythonInterface/__init__.cpp)
 target_link_libraries(fusionc antlr4-runtime)
+
+find_package(PythonLibs REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS})
+target_link_libraries(fusionc ${PYTHON_LIBRARIES})
