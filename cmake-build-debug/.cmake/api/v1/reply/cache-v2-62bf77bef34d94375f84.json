@@ -2,6 +2,18 @@
 	"entries" : 
 	[
 		{
+			"name" : "ANTLR4_CPP_RUNTIME_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "ANTLR4 C++ runtime library directory"
+				}
+			],
+			"type" : "PATH",
+			"value" : "/opt/homebrew/opt/antlr4-cpp-runtime"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
