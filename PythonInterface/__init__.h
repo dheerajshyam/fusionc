@@ -10,6 +10,6 @@ namespace PyInterface
     {
     public:
         Python();
-        static PyObject* import(string const& name);
+        static PyObject* _import(string const& name);
     };
 }
