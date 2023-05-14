@@ -23,6 +23,10 @@ public:
 
     virtual std::any visitStmt(fusionParser::StmtContext *context) = 0;
 
+    virtual std::any visitClass_member_call(fusionParser::Class_member_callContext *context) = 0;
+
+    virtual std::any visitClass_member(fusionParser::Class_memberContext *context) = 0;
+
     virtual std::any visitFunc_call(fusionParser::Func_callContext *context) = 0;
 
     virtual std::any visitParams(fusionParser::ParamsContext *context) = 0;

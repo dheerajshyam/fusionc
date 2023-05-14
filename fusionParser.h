@@ -12,12 +12,14 @@
 class  fusionParser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, IDENTIFIER = 2, LOBRACE = 3, ROBRACE = 4, STRING = 5, ESC_SEQ = 6
+    T__0 = 1, T__1 = 2, IDENTIFIER = 3, LOBRACE = 4, ROBRACE = 5, STRING = 6, 
+    ESC_SEQ = 7
   };
 
   enum {
-    RuleStmts = 0, RuleStmt = 1, RuleFunc_call = 2, RuleParams = 3, RuleParam = 4, 
-    RuleTypeobjects = 5, RuleTypeobject = 6
+    RuleStmts = 0, RuleStmt = 1, RuleClass_member_call = 2, RuleClass_member = 3, 
+    RuleFunc_call = 4, RuleParams = 5, RuleParam = 6, RuleTypeobjects = 7, 
+    RuleTypeobject = 8
   };
 
   explicit fusionParser(antlr4::TokenStream *input);
@@ -39,6 +41,8 @@ public:
 
   class StmtsContext;
   class StmtContext;
+  class Class_member_callContext;
+  class Class_memberContext;
   class Func_callContext;
   class ParamsContext;
   class ParamContext;
@@ -67,6 +71,7 @@ public:
     StmtContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Func_callContext *func_call();
+    Class_member_callContext *class_member_call();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -76,6 +81,40 @@ public:
   };
 
   StmtContext* stmt();
+
+  class  Class_member_callContext : public antlr4::ParserRuleContext {
+  public:
+    Class_member_callContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *IDENTIFIER();
+    Class_memberContext *class_member();
+    antlr4::tree::TerminalNode *LOBRACE();
+    antlr4::tree::TerminalNode *ROBRACE();
+    ParamsContext *params();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Class_member_callContext* class_member_call();
+
+  class  Class_memberContext : public antlr4::ParserRuleContext {
+  public:
+    Class_memberContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Func_callContext *func_call();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Class_memberContext* class_member();
 
   class  Func_callContext : public antlr4::ParserRuleContext {
   public:

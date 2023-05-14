@@ -4,6 +4,15 @@ stmts: stmt+ EOF
     ;
 
 stmt: func_call
+      | class_member_call
+    ;
+
+class_member_call:
+    IDENTIFIER '.' class_member
+    | IDENTIFIER '(' params? ')' '.' class_member
+    ;
+
+class_member: func_call
     ;
 
 func_call:  IDENTIFIER LOBRACE params? ROBRACE

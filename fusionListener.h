@@ -20,6 +20,12 @@ public:
   virtual void enterStmt(fusionParser::StmtContext *ctx) = 0;
   virtual void exitStmt(fusionParser::StmtContext *ctx) = 0;
 
+  virtual void enterClass_member_call(fusionParser::Class_member_callContext *ctx) = 0;
+  virtual void exitClass_member_call(fusionParser::Class_member_callContext *ctx) = 0;
+
+  virtual void enterClass_member(fusionParser::Class_memberContext *ctx) = 0;
+  virtual void exitClass_member(fusionParser::Class_memberContext *ctx) = 0;
+
   virtual void enterFunc_call(fusionParser::Func_callContext *ctx) = 0;
   virtual void exitFunc_call(fusionParser::Func_callContext *ctx) = 0;
 

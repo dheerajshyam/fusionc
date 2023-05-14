@@ -22,6 +22,12 @@ public:
   virtual void enterStmt(fusionParser::StmtContext * /*ctx*/) override { }
   virtual void exitStmt(fusionParser::StmtContext * /*ctx*/) override { }
 
+  virtual void enterClass_member_call(fusionParser::Class_member_callContext * /*ctx*/) override { }
+  virtual void exitClass_member_call(fusionParser::Class_member_callContext * /*ctx*/) override { }
+
+  virtual void enterClass_member(fusionParser::Class_memberContext * /*ctx*/) override { }
+  virtual void exitClass_member(fusionParser::Class_memberContext * /*ctx*/) override { }
+
   virtual void enterFunc_call(fusionParser::Func_callContext * /*ctx*/) override { }
   virtual void exitFunc_call(fusionParser::Func_callContext * /*ctx*/) override { }
 

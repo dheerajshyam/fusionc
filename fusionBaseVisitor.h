@@ -23,6 +23,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitClass_member_call(fusionParser::Class_member_callContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitClass_member(fusionParser::Class_memberContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitFunc_call(fusionParser::Func_callContext *ctx) override {
     return visitChildren(ctx);
   }
