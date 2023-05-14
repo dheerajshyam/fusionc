@@ -31,6 +31,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitClass_object(fusionParser::Class_objectContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitFunc_call(fusionParser::Func_callContext *ctx) override {
     return visitChildren(ctx);
   }

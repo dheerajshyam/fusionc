@@ -26,6 +26,9 @@ public:
   virtual void enterClass_member(fusionParser::Class_memberContext *ctx) = 0;
   virtual void exitClass_member(fusionParser::Class_memberContext *ctx) = 0;
 
+  virtual void enterClass_object(fusionParser::Class_objectContext *ctx) = 0;
+  virtual void exitClass_object(fusionParser::Class_objectContext *ctx) = 0;
+
   virtual void enterFunc_call(fusionParser::Func_callContext *ctx) = 0;
   virtual void exitFunc_call(fusionParser::Func_callContext *ctx) = 0;
 

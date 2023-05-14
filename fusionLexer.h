@@ -12,8 +12,8 @@
 class  fusionLexer : public antlr4::Lexer {
 public:
   enum {
-    T__0 = 1, T__1 = 2, IDENTIFIER = 3, LOBRACE = 4, ROBRACE = 5, STRING = 6, 
-    ESC_SEQ = 7
+    T__0 = 1, T__1 = 2, IDENTIFIER = 3, NEW = 4, LOBRACE = 5, ROBRACE = 6, 
+    STRING = 7, ESC_SEQ = 8
   };
 
   explicit fusionLexer(antlr4::CharStream *input);

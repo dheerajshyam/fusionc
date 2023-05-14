@@ -9,14 +9,17 @@ stmt: func_call
 
 class_member_call:
     IDENTIFIER '.' class_member
-    | IDENTIFIER '(' params? ')' '.' class_member
+    | class_object '.' class_member
     ;
 
 class_member: func_call
     ;
 
+class_object: NEW IDENTIFIER LOBRACE params? ROBRACE
+            ;
+
 func_call:  IDENTIFIER LOBRACE params? ROBRACE
-            | IDENTIFIER params
+            | IDENTIFIER params?
     ;
 
 params: param ((',' param)+)?
@@ -32,6 +35,7 @@ typeobject: STRING
     ;
 
 IDENTIFIER: [_a-zA-Z][_a-zA-Z0-9]+;
+NEW: 'new';
 LOBRACE: '(';
 ROBRACE: ')';
 STRING

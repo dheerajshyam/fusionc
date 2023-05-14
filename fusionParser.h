@@ -12,14 +12,14 @@
 class  fusionParser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, T__1 = 2, IDENTIFIER = 3, LOBRACE = 4, ROBRACE = 5, STRING = 6, 
-    ESC_SEQ = 7
+    T__0 = 1, T__1 = 2, IDENTIFIER = 3, NEW = 4, LOBRACE = 5, ROBRACE = 6, 
+    STRING = 7, ESC_SEQ = 8
   };
 
   enum {
     RuleStmts = 0, RuleStmt = 1, RuleClass_member_call = 2, RuleClass_member = 3, 
-    RuleFunc_call = 4, RuleParams = 5, RuleParam = 6, RuleTypeobjects = 7, 
-    RuleTypeobject = 8
+    RuleClass_object = 4, RuleFunc_call = 5, RuleParams = 6, RuleParam = 7, 
+    RuleTypeobjects = 8, RuleTypeobject = 9
   };
 
   explicit fusionParser(antlr4::TokenStream *input);
@@ -43,6 +43,7 @@ public:
   class StmtContext;
   class Class_member_callContext;
   class Class_memberContext;
+  class Class_objectContext;
   class Func_callContext;
   class ParamsContext;
   class ParamContext;
@@ -88,9 +89,7 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *IDENTIFIER();
     Class_memberContext *class_member();
-    antlr4::tree::TerminalNode *LOBRACE();
-    antlr4::tree::TerminalNode *ROBRACE();
-    ParamsContext *params();
+    Class_objectContext *class_object();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -115,6 +114,25 @@ public:
   };
 
   Class_memberContext* class_member();
+
+  class  Class_objectContext : public antlr4::ParserRuleContext {
+  public:
+    Class_objectContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *NEW();
+    antlr4::tree::TerminalNode *IDENTIFIER();
+    antlr4::tree::TerminalNode *LOBRACE();
+    antlr4::tree::TerminalNode *ROBRACE();
+    ParamsContext *params();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Class_objectContext* class_object();
 
   class  Func_callContext : public antlr4::ParserRuleContext {
   public:

@@ -28,6 +28,9 @@ public:
   virtual void enterClass_member(fusionParser::Class_memberContext * /*ctx*/) override { }
   virtual void exitClass_member(fusionParser::Class_memberContext * /*ctx*/) override { }
 
+  virtual void enterClass_object(fusionParser::Class_objectContext * /*ctx*/) override { }
+  virtual void exitClass_object(fusionParser::Class_objectContext * /*ctx*/) override { }
+
   virtual void enterFunc_call(fusionParser::Func_callContext * /*ctx*/) override { }
   virtual void exitFunc_call(fusionParser::Func_callContext * /*ctx*/) override { }
 
