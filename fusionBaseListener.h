@@ -16,20 +16,35 @@
 class  fusionBaseListener : public fusionListener {
 public:
 
-  virtual void enterStmts(fusionParser::StmtsContext * /*ctx*/) override { }
-  virtual void exitStmts(fusionParser::StmtsContext * /*ctx*/) override { }
+  virtual void enterStart(fusionParser::StartContext * /*ctx*/) override { }
+  virtual void exitStart(fusionParser::StartContext * /*ctx*/) override { }
 
   virtual void enterStmt(fusionParser::StmtContext * /*ctx*/) override { }
   virtual void exitStmt(fusionParser::StmtContext * /*ctx*/) override { }
 
+  virtual void enterVar_decl(fusionParser::Var_declContext * /*ctx*/) override { }
+  virtual void exitVar_decl(fusionParser::Var_declContext * /*ctx*/) override { }
+
+  virtual void enterVar_type(fusionParser::Var_typeContext * /*ctx*/) override { }
+  virtual void exitVar_type(fusionParser::Var_typeContext * /*ctx*/) override { }
+
+  virtual void enterVar_value(fusionParser::Var_valueContext * /*ctx*/) override { }
+  virtual void exitVar_value(fusionParser::Var_valueContext * /*ctx*/) override { }
+
+  virtual void enterExpr(fusionParser::ExprContext * /*ctx*/) override { }
+  virtual void exitExpr(fusionParser::ExprContext * /*ctx*/) override { }
+
+  virtual void enterClass_ops(fusionParser::Class_opsContext * /*ctx*/) override { }
+  virtual void exitClass_ops(fusionParser::Class_opsContext * /*ctx*/) override { }
+
   virtual void enterClass_member_call(fusionParser::Class_member_callContext * /*ctx*/) override { }
   virtual void exitClass_member_call(fusionParser::Class_member_callContext * /*ctx*/) override { }
 
-  virtual void enterClass_member(fusionParser::Class_memberContext * /*ctx*/) override { }
-  virtual void exitClass_member(fusionParser::Class_memberContext * /*ctx*/) override { }
+  virtual void enterClass_object_creation(fusionParser::Class_object_creationContext * /*ctx*/) override { }
+  virtual void exitClass_object_creation(fusionParser::Class_object_creationContext * /*ctx*/) override { }
 
-  virtual void enterClass_object(fusionParser::Class_objectContext * /*ctx*/) override { }
-  virtual void exitClass_object(fusionParser::Class_objectContext * /*ctx*/) override { }
+  virtual void enterClass_hierarchy(fusionParser::Class_hierarchyContext * /*ctx*/) override { }
+  virtual void exitClass_hierarchy(fusionParser::Class_hierarchyContext * /*ctx*/) override { }
 
   virtual void enterFunc_call(fusionParser::Func_callContext * /*ctx*/) override { }
   virtual void exitFunc_call(fusionParser::Func_callContext * /*ctx*/) override { }

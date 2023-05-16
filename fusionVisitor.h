@@ -19,15 +19,25 @@ public:
   /**
    * Visit parse trees produced by fusionParser.
    */
-    virtual std::any visitStmts(fusionParser::StmtsContext *context) = 0;
+    virtual std::any visitStart(fusionParser::StartContext *context) = 0;
 
     virtual std::any visitStmt(fusionParser::StmtContext *context) = 0;
 
+    virtual std::any visitVar_decl(fusionParser::Var_declContext *context) = 0;
+
+    virtual std::any visitVar_type(fusionParser::Var_typeContext *context) = 0;
+
+    virtual std::any visitVar_value(fusionParser::Var_valueContext *context) = 0;
+
+    virtual std::any visitExpr(fusionParser::ExprContext *context) = 0;
+
+    virtual std::any visitClass_ops(fusionParser::Class_opsContext *context) = 0;
+
     virtual std::any visitClass_member_call(fusionParser::Class_member_callContext *context) = 0;
 
-    virtual std::any visitClass_member(fusionParser::Class_memberContext *context) = 0;
+    virtual std::any visitClass_object_creation(fusionParser::Class_object_creationContext *context) = 0;
 
-    virtual std::any visitClass_object(fusionParser::Class_objectContext *context) = 0;
+    virtual std::any visitClass_hierarchy(fusionParser::Class_hierarchyContext *context) = 0;
 
     virtual std::any visitFunc_call(fusionParser::Func_callContext *context) = 0;
 

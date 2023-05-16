@@ -15,7 +15,7 @@
 class  fusionBaseVisitor : public fusionVisitor {
 public:
 
-  virtual std::any visitStmts(fusionParser::StmtsContext *ctx) override {
+  virtual std::any visitStart(fusionParser::StartContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -23,15 +23,35 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitVar_decl(fusionParser::Var_declContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitVar_type(fusionParser::Var_typeContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitVar_value(fusionParser::Var_valueContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitExpr(fusionParser::ExprContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual std::any visitClass_ops(fusionParser::Class_opsContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitClass_member_call(fusionParser::Class_member_callContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClass_member(fusionParser::Class_memberContext *ctx) override {
+  virtual std::any visitClass_object_creation(fusionParser::Class_object_creationContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual std::any visitClass_object(fusionParser::Class_objectContext *ctx) override {
+  virtual std::any visitClass_hierarchy(fusionParser::Class_hierarchyContext *ctx) override {
     return visitChildren(ctx);
   }
 

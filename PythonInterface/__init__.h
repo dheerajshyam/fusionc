@@ -19,7 +19,7 @@ namespace PyInterface
     public:
         Python();
         ~Python();
-        PyModule* _import(string const& name);
+        static PyModule* _import(string const& name);
         PyObject* bltin_method(const string& method_name, PyObject* args);
     };
 

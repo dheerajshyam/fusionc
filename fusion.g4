@@ -1,44 +1,60 @@
 grammar fusion;
 
-stmts: stmt+ EOF
+start: ((stmt | expr)+)? EOF
     ;
 
-stmt: func_call
-      | class_member_call
+stmt: var_decl
     ;
 
-class_member_call:
-    IDENTIFIER '.' class_member
-    | class_object '.' class_member
+var_decl: IDENTIFIER (var_type)? '=' ( ( IDENTIFIER (var_type)? '=' )+ )? var_value
     ;
 
-class_member: func_call
+var_type: ':' IDENTIFIER
     ;
 
-class_object: NEW IDENTIFIER LOBRACE params? ROBRACE
+var_value:  IDENTIFIER
+            | expr
+    ;
+
+expr: func_call
+     | class_ops
+     | typeobjects
+     ;
+
+class_ops:  class_object_creation
+            | class_member_call
             ;
 
-func_call:  IDENTIFIER LOBRACE params? ROBRACE
+class_member_call: (IDENTIFIER | class_object_creation) '.' func_call
+    ;
+
+class_object_creation: 'new' class_hierarchy '(' params? ')'
+    ;
+
+class_hierarchy: IDENTIFIER ( ('::' IDENTIFIER)+ )?
+    ;
+
+func_call:  IDENTIFIER '(' params? ')'
             | IDENTIFIER params?
     ;
 
 params: param ((',' param)+)?
     ;
 
-param: typeobjects
+param: IDENTIFIER
+      | expr
      ;
 
 typeobjects: typeobject ((typeobject)+)?
     ;
 
-typeobject: STRING
+typeobject: (STRING | INT)
     ;
 
-IDENTIFIER: [_a-zA-Z][_a-zA-Z0-9]+;
-NEW: 'new';
-LOBRACE: '(';
-ROBRACE: ')';
+IDENTIFIER: [_a-zA-Z]([_a-zA-Z0-9]+)?;
 STRING
   : '\'' ( ESC_SEQ | ~('\''|'\\') )* '\''
   | '"' ( ESC_SEQ | ~('"'|'\\') )* '"';
+INT: [0-9]([0-9]+)?;
 ESC_SEQ : '\\' ( 't' | 'n' | 'r' | '\\' | '"' | '\'' );
+WHITESPACE: [ \t\r\n]+ -> skip;

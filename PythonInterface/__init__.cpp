@@ -11,11 +11,13 @@ PyInterface::Python::~Python()
 
 PyInterface::PyModule* PyInterface::Python::_import(string const& name)
 {
+    Py_Initialize();
     auto* mod = PyImport_ImportModule(name.c_str());
     if(mod == nullptr) {
         PyErr_Print();
         return nullptr;
     }
+    Py_Finalize();
     return new PyInterface::PyModule(mod);
 }
 
