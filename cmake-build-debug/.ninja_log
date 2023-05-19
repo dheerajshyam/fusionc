@@ -1,4 +1,10 @@
 # ninja log v5
-6	817	1684046132423786457	CMakeFiles/fusionc.dir/fusionc.cpp.o	55e3851ecfb1d371
-7	820	1684042654853914802	CMakeFiles/fusionc.dir/PythonInterface/__init__.cpp.o	572c48612c464466
-818	1023	1684046132636416774	fusionc	774fb60ec763d82c
+1339	1513	1684499903247964013	fusionc	a2a1bb073c1d7406
+3	1337	1684499903062870362	CMakeFiles/fusionc.dir/fusionc.cpp.o	e571b7b5cd86a0b4
+1	306	1684499980675577844	build.ninja	96c116479422e54d
+8	1628	1684498813447972098	CMakeFiles/pyinterface.dir/PythonInterface/__init__.cpp.o	7cc80854cfd7fb3a
+0	21	0	clean	3c8e6cc385ee00ba
+1630	1771	1684498813594854610	libpyinterface.dylib	19d17a5bd72b0ada
+4	1721	1684499952137814269	CMakeFiles/fusionc.dir/fusionLexer.cpp.o	fc562152bb1c7b92
+4	1915	1684499952342762646	CMakeFiles/fusionc.dir/fusionParser.cpp.o	1f7eb2e873e12086
+13	1138	1684499985338618040	CMakeFiles/fusionc.dir/fusionc.cpp.o	e571b7b5cd86a0b4

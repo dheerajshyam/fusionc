@@ -48,11 +48,11 @@ param: IDENTIFIER
 typeobjects: typeobject ((typeobject)+)?
     ;
 
-typeobject: (STRING | INT)
+typeobject: (STR | INT)
     ;
 
 IDENTIFIER: [_a-zA-Z]([_a-zA-Z0-9]+)?;
-STRING
+STR
   : '\'' ( ESC_SEQ | ~('\''|'\\') )* '\''
   | '"' ( ESC_SEQ | ~('"'|'\\') )* '"';
 INT: [0-9]([0-9]+)?;

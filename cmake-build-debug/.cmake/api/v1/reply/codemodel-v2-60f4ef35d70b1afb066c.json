@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "fusionc",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -39,8 +41,15 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "fusionc::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-fusionc-Debug-3446389b2a782eebf467.json",
+					"jsonFile" : "target-fusionc-Debug-7631318e41d0e638a27f.json",
 					"name" : "fusionc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pyinterface::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pyinterface-Debug-94afe5ca3befbbcfd7e9.json",
+					"name" : "pyinterface",
 					"projectIndex" : 0
 				}
 			]

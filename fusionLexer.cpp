@@ -49,7 +49,7 @@ void fusionlexerLexerInitialize() {
   auto staticData = std::make_unique<FusionLexerStaticData>(
     std::vector<std::string>{
       "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "IDENTIFIER", 
-      "STRING", "INT", "ESC_SEQ", "WHITESPACE"
+      "STR", "INT", "ESC_SEQ", "WHITESPACE"
     },
     std::vector<std::string>{
       "DEFAULT_TOKEN_CHANNEL", "HIDDEN"
@@ -61,8 +61,8 @@ void fusionlexerLexerInitialize() {
       "", "'='", "':'", "'.'", "'new'", "'('", "')'", "'::'", "','"
     },
     std::vector<std::string>{
-      "", "", "", "", "", "", "", "", "", "IDENTIFIER", "STRING", "INT", 
-      "ESC_SEQ", "WHITESPACE"
+      "", "", "", "", "", "", "", "", "", "IDENTIFIER", "STR", "INT", "ESC_SEQ", 
+      "WHITESPACE"
     }
   );
   static const int32_t serializedATNSegment[] = {

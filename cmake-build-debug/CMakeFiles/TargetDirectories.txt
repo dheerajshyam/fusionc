@@ -1,3 +1,4 @@
+/Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debug/CMakeFiles/pyinterface.dir
 /Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debug/CMakeFiles/fusionc.dir
 /Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debug/CMakeFiles/rebuild_cache.dir

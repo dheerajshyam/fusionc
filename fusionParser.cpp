@@ -52,8 +52,8 @@ void fusionParserInitialize() {
       "", "'='", "':'", "'.'", "'new'", "'('", "')'", "'::'", "','"
     },
     std::vector<std::string>{
-      "", "", "", "", "", "", "", "", "", "IDENTIFIER", "STRING", "INT", 
-      "ESC_SEQ", "WHITESPACE"
+      "", "", "", "", "", "", "", "", "", "IDENTIFIER", "STR", "INT", "ESC_SEQ", 
+      "WHITESPACE"
     }
   );
   static const int32_t serializedATNSegment[] = {
@@ -1414,8 +1414,8 @@ fusionParser::TypeobjectContext::TypeobjectContext(ParserRuleContext *parent, si
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* fusionParser::TypeobjectContext::STRING() {
-  return getToken(fusionParser::STRING, 0);
+tree::TerminalNode* fusionParser::TypeobjectContext::STR() {
+  return getToken(fusionParser::STR, 0);
 }
 
 tree::TerminalNode* fusionParser::TypeobjectContext::INT() {
@@ -1463,7 +1463,7 @@ fusionParser::TypeobjectContext* fusionParser::typeobject() {
     enterOuterAlt(_localctx, 1);
     setState(133);
     _la = _input->LA(1);
-    if (!(_la == fusionParser::STRING
+    if (!(_la == fusionParser::STR
 
     || _la == fusionParser::INT)) {
     _errHandler->recoverInline(this);
