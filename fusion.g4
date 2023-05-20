@@ -6,7 +6,7 @@ start: ((stmt | expr)+)? EOF
 stmt: var_decl
     ;
 
-var_decl: IDENTIFIER (var_type)? '=' ( ( IDENTIFIER (var_type)? '=' )+ )? var_value
+var_decl: IDENTIFIER var_type '=' ( ( IDENTIFIER var_type '=' )+ )? var_value
     ;
 
 var_type: ':' IDENTIFIER

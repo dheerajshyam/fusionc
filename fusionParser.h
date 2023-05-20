@@ -96,9 +96,9 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
     antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
-    Var_valueContext *var_value();
     std::vector<Var_typeContext *> var_type();
     Var_typeContext* var_type(size_t i);
+    Var_valueContext *var_value();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

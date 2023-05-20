@@ -3,9 +3,12 @@
 #ifndef FUSIONC_NODES_H
 #define FUSIONC_NODES_H
 
+#pragma once
+
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <map>
 #include <any>
 
 #include "fusionBaseVisitor.h"
@@ -18,12 +21,12 @@ enum NodeType { TO = 1, PARAM = 2, FUNC_CALL = 3, CLASS_OBJ_CREATION = 4, CLASS_
 enum TypeObject { INT = 1, STR = 2 };
 enum ParameterType { IDENTIFIER = 1, EXPRESSION = 2 };
 enum VarValueType { IDEN = 1, EXPR=2 };
+enum ChildType { NODE=1, VECTOR=2 };
 
 struct Node
 {
     NodeType nd_type;
-    Node* link;
-    vector<Node*> children;
+    map<ChildType, any> children;
 };
 
 struct TypeObjectNode

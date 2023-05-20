@@ -38,7 +38,7 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debug/
 # =============================================================================
-# Object build statements for SHARED_LIBRARY target pyinterface
+# Object build statements for STATIC_LIBRARY target pyinterface
 
 
 #############################################
@@ -47,33 +47,28 @@ cmake_ninja_workdir = /Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debu
 build cmake_object_order_depends_target_pyinterface: phony || CMakeFiles/pyinterface.dir
 
 build CMakeFiles/pyinterface.dir/PythonInterface/__init__.cpp.o: CXX_COMPILER__pyinterface_Debug /Users/dheerajshyam/CLionProjects/fusionc/PythonInterface/__init__.cpp || cmake_object_order_depends_target_pyinterface
-  DEFINES = -Dpyinterface_EXPORTS
   DEP_FILE = CMakeFiles/pyinterface.dir/PythonInterface/__init__.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fPIC -fcolor-diagnostics -std=gnu++20
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu++20
   INCLUDES = -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11
   OBJECT_DIR = CMakeFiles/pyinterface.dir
   OBJECT_FILE_DIR = CMakeFiles/pyinterface.dir/PythonInterface
 
 
 # =============================================================================
-# Link build statements for SHARED_LIBRARY target pyinterface
+# Link build statements for STATIC_LIBRARY target pyinterface
 
 
 #############################################
-# Link the shared library libpyinterface.dylib
+# Link the static library libpyinterface.a
 
-build libpyinterface.dylib: CXX_SHARED_LIBRARY_LINKER__pyinterface_Debug CMakeFiles/pyinterface.dir/PythonInterface/__init__.cpp.o | /opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/lib/libpython3.11.dylib
+build libpyinterface.a: CXX_STATIC_LIBRARY_LINKER__pyinterface_Debug CMakeFiles/pyinterface.dir/PythonInterface/__init__.cpp.o
   ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2
-  INSTALLNAME_DIR = @rpath/
   LANGUAGE_COMPILE_FLAGS = -g
-  LINK_LIBRARIES = /opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/lib/libpython3.11.dylib
   OBJECT_DIR = CMakeFiles/pyinterface.dir
   POST_BUILD = :
   PRE_LINK = :
-  SONAME = libpyinterface.dylib
-  SONAME_FLAG = -install_name
-  TARGET_FILE = libpyinterface.dylib
-  TARGET_PDB = pyinterface.dylib.dbg
+  TARGET_FILE = libpyinterface.a
+  TARGET_PDB = pyinterface.a.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target fusionc
@@ -87,21 +82,28 @@ build cmake_object_order_depends_target_fusionc: phony || CMakeFiles/fusionc.dir
 build CMakeFiles/fusionc.dir/fusionc.cpp.o: CXX_COMPILER__fusionc_Debug /Users/dheerajshyam/CLionProjects/fusionc/fusionc.cpp || cmake_object_order_depends_target_fusionc
   DEP_FILE = CMakeFiles/fusionc.dir/fusionc.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu++20
-  INCLUDES = -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -isystem /opt/homebrew/opt/antlr4-cpp-runtime/include/antlr4-runtime
+  INCLUDES = -isystem /opt/homebrew/opt/antlr4-cpp-runtime/include/antlr4-runtime
   OBJECT_DIR = CMakeFiles/fusionc.dir
   OBJECT_FILE_DIR = CMakeFiles/fusionc.dir
 
 build CMakeFiles/fusionc.dir/fusionLexer.cpp.o: CXX_COMPILER__fusionc_Debug /Users/dheerajshyam/CLionProjects/fusionc/fusionLexer.cpp || cmake_object_order_depends_target_fusionc
   DEP_FILE = CMakeFiles/fusionc.dir/fusionLexer.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu++20
-  INCLUDES = -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -isystem /opt/homebrew/opt/antlr4-cpp-runtime/include/antlr4-runtime
+  INCLUDES = -isystem /opt/homebrew/opt/antlr4-cpp-runtime/include/antlr4-runtime
   OBJECT_DIR = CMakeFiles/fusionc.dir
   OBJECT_FILE_DIR = CMakeFiles/fusionc.dir
 
 build CMakeFiles/fusionc.dir/fusionParser.cpp.o: CXX_COMPILER__fusionc_Debug /Users/dheerajshyam/CLionProjects/fusionc/fusionParser.cpp || cmake_object_order_depends_target_fusionc
   DEP_FILE = CMakeFiles/fusionc.dir/fusionParser.cpp.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu++20
-  INCLUDES = -I/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11 -isystem /opt/homebrew/opt/antlr4-cpp-runtime/include/antlr4-runtime
+  INCLUDES = -isystem /opt/homebrew/opt/antlr4-cpp-runtime/include/antlr4-runtime
+  OBJECT_DIR = CMakeFiles/fusionc.dir
+  OBJECT_FILE_DIR = CMakeFiles/fusionc.dir
+
+build CMakeFiles/fusionc.dir/base.cpp.o: CXX_COMPILER__fusionc_Debug /Users/dheerajshyam/CLionProjects/fusionc/base.cpp || cmake_object_order_depends_target_fusionc
+  DEP_FILE = CMakeFiles/fusionc.dir/base.cpp.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics -std=gnu++20
+  INCLUDES = -isystem /opt/homebrew/opt/antlr4-cpp-runtime/include/antlr4-runtime
   OBJECT_DIR = CMakeFiles/fusionc.dir
   OBJECT_FILE_DIR = CMakeFiles/fusionc.dir
 
@@ -113,7 +115,7 @@ build CMakeFiles/fusionc.dir/fusionParser.cpp.o: CXX_COMPILER__fusionc_Debug /Us
 #############################################
 # Link the executable fusionc
 
-build fusionc: CXX_EXECUTABLE_LINKER__fusionc_Debug CMakeFiles/fusionc.dir/fusionc.cpp.o CMakeFiles/fusionc.dir/fusionLexer.cpp.o CMakeFiles/fusionc.dir/fusionParser.cpp.o | /opt/homebrew/opt/antlr4-cpp-runtime/lib/libantlr4-runtime.dylib
+build fusionc: CXX_EXECUTABLE_LINKER__fusionc_Debug CMakeFiles/fusionc.dir/fusionc.cpp.o CMakeFiles/fusionc.dir/fusionLexer.cpp.o CMakeFiles/fusionc.dir/fusionParser.cpp.o CMakeFiles/fusionc.dir/base.cpp.o | /opt/homebrew/opt/antlr4-cpp-runtime/lib/libantlr4-runtime.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2
   LINK_LIBRARIES = /opt/homebrew/opt/antlr4-cpp-runtime/lib/libantlr4-runtime.dylib
   OBJECT_DIR = CMakeFiles/fusionc.dir
@@ -148,7 +150,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build pyinterface: phony libpyinterface.dylib
+build pyinterface: phony libpyinterface.a
 
 # =============================================================================
 # Folder targets.
@@ -158,7 +160,7 @@ build pyinterface: phony libpyinterface.dylib
 #############################################
 # Folder: /Users/dheerajshyam/CLionProjects/fusionc/cmake-build-debug
 
-build all: phony libpyinterface.dylib fusionc
+build all: phony libpyinterface.a fusionc
 
 # =============================================================================
 # Built-in targets

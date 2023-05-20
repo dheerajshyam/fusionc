@@ -4,7 +4,24 @@
 
 any Visitor::visitStart(fusionParser::StartContext *ctx)
 {
-    return nullptr;
+    auto* root = new Node();
+    int index = 0;
+    for(const auto& child : ctx->children)
+    {
+        if(++index == ctx->children.size() - 1) break;
+
+        any result = visit(child);
+        if(result.type() == typeid(vector<Node*>))
+            root->children[ChildType::VECTOR] = result;
+        else if(result.type() == typeid(Node*))
+            root->children[ChildType::NODE] = result;
+        else {
+            cout << result.type().name() << endl;
+            delete root;
+            return nullptr;
+        }
+    }
+    return root;
 }
 any Visitor::visitStmt(fusionParser::StmtContext *ctx)
 {
@@ -127,7 +144,7 @@ any Visitor::visitClass_member_call(fusionParser::Class_member_callContext *ctx)
     node->node = new Node();
     node->node->nd_type = NodeType::CLASS_MEM_CALL;
 
-    return node;
+    return node->node;
 }
 any Visitor::visitClass_object_creation(fusionParser::Class_object_creationContext *ctx)
 {

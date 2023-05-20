@@ -57,49 +57,47 @@ void fusionParserInitialize() {
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,13,136,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
+  	4,1,13,133,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
   	7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,
   	14,1,0,1,0,4,0,33,8,0,11,0,12,0,34,3,0,37,8,0,1,0,1,0,1,1,1,1,1,2,1,2,
-  	3,2,45,8,2,1,2,1,2,1,2,3,2,50,8,2,1,2,4,2,53,8,2,11,2,12,2,54,3,2,57,
-  	8,2,1,2,1,2,1,3,1,3,1,3,1,4,1,4,3,4,66,8,4,1,5,1,5,1,5,3,5,71,8,5,1,6,
-  	1,6,3,6,75,8,6,1,7,1,7,3,7,79,8,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,3,8,88,
-  	8,8,1,8,1,8,1,9,1,9,1,9,4,9,95,8,9,11,9,12,9,96,3,9,99,8,9,1,10,1,10,
-  	1,10,3,10,104,8,10,1,10,1,10,1,10,3,10,109,8,10,3,10,111,8,10,1,11,1,
-  	11,1,11,4,11,116,8,11,11,11,12,11,117,3,11,120,8,11,1,12,1,12,3,12,124,
-  	8,12,1,13,1,13,4,13,128,8,13,11,13,12,13,129,3,13,132,8,13,1,14,1,14,
-  	1,14,0,0,15,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,0,1,1,0,10,11,143,
-  	0,36,1,0,0,0,2,40,1,0,0,0,4,42,1,0,0,0,6,60,1,0,0,0,8,65,1,0,0,0,10,70,
-  	1,0,0,0,12,74,1,0,0,0,14,78,1,0,0,0,16,83,1,0,0,0,18,91,1,0,0,0,20,110,
-  	1,0,0,0,22,112,1,0,0,0,24,123,1,0,0,0,26,125,1,0,0,0,28,133,1,0,0,0,30,
-  	33,3,2,1,0,31,33,3,10,5,0,32,30,1,0,0,0,32,31,1,0,0,0,33,34,1,0,0,0,34,
-  	32,1,0,0,0,34,35,1,0,0,0,35,37,1,0,0,0,36,32,1,0,0,0,36,37,1,0,0,0,37,
-  	38,1,0,0,0,38,39,5,0,0,1,39,1,1,0,0,0,40,41,3,4,2,0,41,3,1,0,0,0,42,44,
-  	5,9,0,0,43,45,3,6,3,0,44,43,1,0,0,0,44,45,1,0,0,0,45,46,1,0,0,0,46,56,
-  	5,1,0,0,47,49,5,9,0,0,48,50,3,6,3,0,49,48,1,0,0,0,49,50,1,0,0,0,50,51,
-  	1,0,0,0,51,53,5,1,0,0,52,47,1,0,0,0,53,54,1,0,0,0,54,52,1,0,0,0,54,55,
-  	1,0,0,0,55,57,1,0,0,0,56,52,1,0,0,0,56,57,1,0,0,0,57,58,1,0,0,0,58,59,
-  	3,8,4,0,59,5,1,0,0,0,60,61,5,2,0,0,61,62,5,9,0,0,62,7,1,0,0,0,63,66,5,
-  	9,0,0,64,66,3,10,5,0,65,63,1,0,0,0,65,64,1,0,0,0,66,9,1,0,0,0,67,71,3,
-  	20,10,0,68,71,3,12,6,0,69,71,3,26,13,0,70,67,1,0,0,0,70,68,1,0,0,0,70,
-  	69,1,0,0,0,71,11,1,0,0,0,72,75,3,16,8,0,73,75,3,14,7,0,74,72,1,0,0,0,
-  	74,73,1,0,0,0,75,13,1,0,0,0,76,79,5,9,0,0,77,79,3,16,8,0,78,76,1,0,0,
-  	0,78,77,1,0,0,0,79,80,1,0,0,0,80,81,5,3,0,0,81,82,3,20,10,0,82,15,1,0,
-  	0,0,83,84,5,4,0,0,84,85,3,18,9,0,85,87,5,5,0,0,86,88,3,22,11,0,87,86,
-  	1,0,0,0,87,88,1,0,0,0,88,89,1,0,0,0,89,90,5,6,0,0,90,17,1,0,0,0,91,98,
-  	5,9,0,0,92,93,5,7,0,0,93,95,5,9,0,0,94,92,1,0,0,0,95,96,1,0,0,0,96,94,
-  	1,0,0,0,96,97,1,0,0,0,97,99,1,0,0,0,98,94,1,0,0,0,98,99,1,0,0,0,99,19,
-  	1,0,0,0,100,101,5,9,0,0,101,103,5,5,0,0,102,104,3,22,11,0,103,102,1,0,
-  	0,0,103,104,1,0,0,0,104,105,1,0,0,0,105,111,5,6,0,0,106,108,5,9,0,0,107,
-  	109,3,22,11,0,108,107,1,0,0,0,108,109,1,0,0,0,109,111,1,0,0,0,110,100,
-  	1,0,0,0,110,106,1,0,0,0,111,21,1,0,0,0,112,119,3,24,12,0,113,114,5,8,
-  	0,0,114,116,3,24,12,0,115,113,1,0,0,0,116,117,1,0,0,0,117,115,1,0,0,0,
-  	117,118,1,0,0,0,118,120,1,0,0,0,119,115,1,0,0,0,119,120,1,0,0,0,120,23,
-  	1,0,0,0,121,124,5,9,0,0,122,124,3,10,5,0,123,121,1,0,0,0,123,122,1,0,
-  	0,0,124,25,1,0,0,0,125,131,3,28,14,0,126,128,3,28,14,0,127,126,1,0,0,
-  	0,128,129,1,0,0,0,129,127,1,0,0,0,129,130,1,0,0,0,130,132,1,0,0,0,131,
-  	127,1,0,0,0,131,132,1,0,0,0,132,27,1,0,0,0,133,134,7,0,0,0,134,29,1,0,
-  	0,0,22,32,34,36,44,49,54,56,65,70,74,78,87,96,98,103,108,110,117,119,
-  	123,129,131
+  	1,2,1,2,1,2,1,2,1,2,4,2,50,8,2,11,2,12,2,51,3,2,54,8,2,1,2,1,2,1,3,1,
+  	3,1,3,1,4,1,4,3,4,63,8,4,1,5,1,5,1,5,3,5,68,8,5,1,6,1,6,3,6,72,8,6,1,
+  	7,1,7,3,7,76,8,7,1,7,1,7,1,7,1,8,1,8,1,8,1,8,3,8,85,8,8,1,8,1,8,1,9,1,
+  	9,1,9,4,9,92,8,9,11,9,12,9,93,3,9,96,8,9,1,10,1,10,1,10,3,10,101,8,10,
+  	1,10,1,10,1,10,3,10,106,8,10,3,10,108,8,10,1,11,1,11,1,11,4,11,113,8,
+  	11,11,11,12,11,114,3,11,117,8,11,1,12,1,12,3,12,121,8,12,1,13,1,13,4,
+  	13,125,8,13,11,13,12,13,126,3,13,129,8,13,1,14,1,14,1,14,0,0,15,0,2,4,
+  	6,8,10,12,14,16,18,20,22,24,26,28,0,1,1,0,10,11,138,0,36,1,0,0,0,2,40,
+  	1,0,0,0,4,42,1,0,0,0,6,57,1,0,0,0,8,62,1,0,0,0,10,67,1,0,0,0,12,71,1,
+  	0,0,0,14,75,1,0,0,0,16,80,1,0,0,0,18,88,1,0,0,0,20,107,1,0,0,0,22,109,
+  	1,0,0,0,24,120,1,0,0,0,26,122,1,0,0,0,28,130,1,0,0,0,30,33,3,2,1,0,31,
+  	33,3,10,5,0,32,30,1,0,0,0,32,31,1,0,0,0,33,34,1,0,0,0,34,32,1,0,0,0,34,
+  	35,1,0,0,0,35,37,1,0,0,0,36,32,1,0,0,0,36,37,1,0,0,0,37,38,1,0,0,0,38,
+  	39,5,0,0,1,39,1,1,0,0,0,40,41,3,4,2,0,41,3,1,0,0,0,42,43,5,9,0,0,43,44,
+  	3,6,3,0,44,53,5,1,0,0,45,46,5,9,0,0,46,47,3,6,3,0,47,48,5,1,0,0,48,50,
+  	1,0,0,0,49,45,1,0,0,0,50,51,1,0,0,0,51,49,1,0,0,0,51,52,1,0,0,0,52,54,
+  	1,0,0,0,53,49,1,0,0,0,53,54,1,0,0,0,54,55,1,0,0,0,55,56,3,8,4,0,56,5,
+  	1,0,0,0,57,58,5,2,0,0,58,59,5,9,0,0,59,7,1,0,0,0,60,63,5,9,0,0,61,63,
+  	3,10,5,0,62,60,1,0,0,0,62,61,1,0,0,0,63,9,1,0,0,0,64,68,3,20,10,0,65,
+  	68,3,12,6,0,66,68,3,26,13,0,67,64,1,0,0,0,67,65,1,0,0,0,67,66,1,0,0,0,
+  	68,11,1,0,0,0,69,72,3,16,8,0,70,72,3,14,7,0,71,69,1,0,0,0,71,70,1,0,0,
+  	0,72,13,1,0,0,0,73,76,5,9,0,0,74,76,3,16,8,0,75,73,1,0,0,0,75,74,1,0,
+  	0,0,76,77,1,0,0,0,77,78,5,3,0,0,78,79,3,20,10,0,79,15,1,0,0,0,80,81,5,
+  	4,0,0,81,82,3,18,9,0,82,84,5,5,0,0,83,85,3,22,11,0,84,83,1,0,0,0,84,85,
+  	1,0,0,0,85,86,1,0,0,0,86,87,5,6,0,0,87,17,1,0,0,0,88,95,5,9,0,0,89,90,
+  	5,7,0,0,90,92,5,9,0,0,91,89,1,0,0,0,92,93,1,0,0,0,93,91,1,0,0,0,93,94,
+  	1,0,0,0,94,96,1,0,0,0,95,91,1,0,0,0,95,96,1,0,0,0,96,19,1,0,0,0,97,98,
+  	5,9,0,0,98,100,5,5,0,0,99,101,3,22,11,0,100,99,1,0,0,0,100,101,1,0,0,
+  	0,101,102,1,0,0,0,102,108,5,6,0,0,103,105,5,9,0,0,104,106,3,22,11,0,105,
+  	104,1,0,0,0,105,106,1,0,0,0,106,108,1,0,0,0,107,97,1,0,0,0,107,103,1,
+  	0,0,0,108,21,1,0,0,0,109,116,3,24,12,0,110,111,5,8,0,0,111,113,3,24,12,
+  	0,112,110,1,0,0,0,113,114,1,0,0,0,114,112,1,0,0,0,114,115,1,0,0,0,115,
+  	117,1,0,0,0,116,112,1,0,0,0,116,117,1,0,0,0,117,23,1,0,0,0,118,121,5,
+  	9,0,0,119,121,3,10,5,0,120,118,1,0,0,0,120,119,1,0,0,0,121,25,1,0,0,0,
+  	122,128,3,28,14,0,123,125,3,28,14,0,124,123,1,0,0,0,125,126,1,0,0,0,126,
+  	124,1,0,0,0,126,127,1,0,0,0,127,129,1,0,0,0,128,124,1,0,0,0,128,129,1,
+  	0,0,0,129,27,1,0,0,0,130,131,7,0,0,0,131,29,1,0,0,0,20,32,34,36,51,53,
+  	62,67,71,75,84,93,95,100,105,107,114,116,120,126,128
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -335,16 +333,16 @@ tree::TerminalNode* fusionParser::Var_declContext::IDENTIFIER(size_t i) {
   return getToken(fusionParser::IDENTIFIER, i);
 }
 
-fusionParser::Var_valueContext* fusionParser::Var_declContext::var_value() {
-  return getRuleContext<fusionParser::Var_valueContext>(0);
-}
-
 std::vector<fusionParser::Var_typeContext *> fusionParser::Var_declContext::var_type() {
   return getRuleContexts<fusionParser::Var_typeContext>();
 }
 
 fusionParser::Var_typeContext* fusionParser::Var_declContext::var_type(size_t i) {
   return getRuleContext<fusionParser::Var_typeContext>(i);
+}
+
+fusionParser::Var_valueContext* fusionParser::Var_declContext::var_value() {
+  return getRuleContext<fusionParser::Var_valueContext>(0);
 }
 
 
@@ -375,7 +373,6 @@ std::any fusionParser::Var_declContext::accept(tree::ParseTreeVisitor *visitor) 
 fusionParser::Var_declContext* fusionParser::var_decl() {
   Var_declContext *_localctx = _tracker.createInstance<Var_declContext>(_ctx, getState());
   enterRule(_localctx, 4, fusionParser::RuleVar_decl);
-  size_t _la = 0;
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
@@ -389,38 +386,26 @@ fusionParser::Var_declContext* fusionParser::var_decl() {
     enterOuterAlt(_localctx, 1);
     setState(42);
     match(fusionParser::IDENTIFIER);
+    setState(43);
+    var_type();
     setState(44);
-    _errHandler->sync(this);
-
-    _la = _input->LA(1);
-    if (_la == fusionParser::T__1) {
-      setState(43);
-      var_type();
-    }
-    setState(46);
     match(fusionParser::T__0);
-    setState(56);
+    setState(53);
     _errHandler->sync(this);
 
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx)) {
     case 1: {
-      setState(52); 
+      setState(49); 
       _errHandler->sync(this);
       alt = 1;
       do {
         switch (alt) {
           case 1: {
-                setState(47);
+                setState(45);
                 match(fusionParser::IDENTIFIER);
-                setState(49);
-                _errHandler->sync(this);
-
-                _la = _input->LA(1);
-                if (_la == fusionParser::T__1) {
-                  setState(48);
-                  var_type();
-                }
-                setState(51);
+                setState(46);
+                var_type();
+                setState(47);
                 match(fusionParser::T__0);
                 break;
               }
@@ -428,9 +413,9 @@ fusionParser::Var_declContext* fusionParser::var_decl() {
         default:
           throw NoViableAltException(this);
         }
-        setState(54); 
+        setState(51); 
         _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 5, _ctx);
+        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx);
       } while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER);
       break;
     }
@@ -438,7 +423,7 @@ fusionParser::Var_declContext* fusionParser::var_decl() {
     default:
       break;
     }
-    setState(58);
+    setState(55);
     var_value();
    
   }
@@ -499,9 +484,9 @@ fusionParser::Var_typeContext* fusionParser::var_type() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(60);
+    setState(57);
     match(fusionParser::T__1);
-    setState(61);
+    setState(58);
     match(fusionParser::IDENTIFIER);
    
   }
@@ -565,19 +550,19 @@ fusionParser::Var_valueContext* fusionParser::var_value() {
     exitRule();
   });
   try {
-    setState(65);
+    setState(62);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 5, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(63);
+      setState(60);
       match(fusionParser::IDENTIFIER);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(64);
+      setState(61);
       expr();
       break;
     }
@@ -651,26 +636,26 @@ fusionParser::ExprContext* fusionParser::expr() {
     exitRule();
   });
   try {
-    setState(70);
+    setState(67);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 8, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(67);
+      setState(64);
       func_call();
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(68);
+      setState(65);
       class_ops();
       break;
     }
 
     case 3: {
       enterOuterAlt(_localctx, 3);
-      setState(69);
+      setState(66);
       typeobjects();
       break;
     }
@@ -740,19 +725,19 @@ fusionParser::Class_opsContext* fusionParser::class_ops() {
     exitRule();
   });
   try {
-    setState(74);
+    setState(71);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 9, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(72);
+      setState(69);
       class_object_creation();
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(73);
+      setState(70);
       class_member_call();
       break;
     }
@@ -827,17 +812,17 @@ fusionParser::Class_member_callContext* fusionParser::class_member_call() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(78);
+    setState(75);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case fusionParser::IDENTIFIER: {
-        setState(76);
+        setState(73);
         match(fusionParser::IDENTIFIER);
         break;
       }
 
       case fusionParser::T__3: {
-        setState(77);
+        setState(74);
         class_object_creation();
         break;
       }
@@ -845,9 +830,9 @@ fusionParser::Class_member_callContext* fusionParser::class_member_call() {
     default:
       throw NoViableAltException(this);
     }
-    setState(80);
+    setState(77);
     match(fusionParser::T__2);
-    setState(81);
+    setState(78);
     func_call();
    
   }
@@ -913,22 +898,22 @@ fusionParser::Class_object_creationContext* fusionParser::class_object_creation(
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(83);
+    setState(80);
     match(fusionParser::T__3);
-    setState(84);
+    setState(81);
     class_hierarchy();
-    setState(85);
+    setState(82);
     match(fusionParser::T__4);
-    setState(87);
+    setState(84);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if ((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & 3600) != 0)) {
-      setState(86);
+      setState(83);
       params();
     }
-    setState(89);
+    setState(86);
     match(fusionParser::T__5);
    
   }
@@ -994,22 +979,22 @@ fusionParser::Class_hierarchyContext* fusionParser::class_hierarchy() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(91);
+    setState(88);
     match(fusionParser::IDENTIFIER);
-    setState(98);
+    setState(95);
     _errHandler->sync(this);
 
     _la = _input->LA(1);
     if (_la == fusionParser::T__6) {
-      setState(94); 
+      setState(91); 
       _errHandler->sync(this);
       _la = _input->LA(1);
       do {
-        setState(92);
+        setState(89);
         match(fusionParser::T__6);
-        setState(93);
+        setState(90);
         match(fusionParser::IDENTIFIER);
-        setState(96); 
+        setState(93); 
         _errHandler->sync(this);
         _la = _input->LA(1);
       } while (_la == fusionParser::T__6);
@@ -1077,39 +1062,39 @@ fusionParser::Func_callContext* fusionParser::func_call() {
     exitRule();
   });
   try {
-    setState(110);
+    setState(107);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 14, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(100);
+      setState(97);
       match(fusionParser::IDENTIFIER);
-      setState(101);
+      setState(98);
       match(fusionParser::T__4);
-      setState(103);
+      setState(100);
       _errHandler->sync(this);
 
       _la = _input->LA(1);
       if ((((_la & ~ 0x3fULL) == 0) &&
         ((1ULL << _la) & 3600) != 0)) {
-        setState(102);
+        setState(99);
         params();
       }
-      setState(105);
+      setState(102);
       match(fusionParser::T__5);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(106);
+      setState(103);
       match(fusionParser::IDENTIFIER);
-      setState(108);
+      setState(105);
       _errHandler->sync(this);
 
-      switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx)) {
+      switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 13, _ctx)) {
       case 1: {
-        setState(107);
+        setState(104);
         params();
         break;
       }
@@ -1187,22 +1172,22 @@ fusionParser::ParamsContext* fusionParser::params() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(112);
+    setState(109);
     param();
-    setState(119);
+    setState(116);
     _errHandler->sync(this);
 
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 18, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx)) {
     case 1: {
-      setState(115); 
+      setState(112); 
       _errHandler->sync(this);
       alt = 1;
       do {
         switch (alt) {
           case 1: {
-                setState(113);
+                setState(110);
                 match(fusionParser::T__7);
-                setState(114);
+                setState(111);
                 param();
                 break;
               }
@@ -1210,9 +1195,9 @@ fusionParser::ParamsContext* fusionParser::params() {
         default:
           throw NoViableAltException(this);
         }
-        setState(117); 
+        setState(114); 
         _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 17, _ctx);
+        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx);
       } while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER);
       break;
     }
@@ -1282,19 +1267,19 @@ fusionParser::ParamContext* fusionParser::param() {
     exitRule();
   });
   try {
-    setState(123);
+    setState(120);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 19, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 17, _ctx)) {
     case 1: {
       enterOuterAlt(_localctx, 1);
-      setState(121);
+      setState(118);
       match(fusionParser::IDENTIFIER);
       break;
     }
 
     case 2: {
       enterOuterAlt(_localctx, 2);
-      setState(122);
+      setState(119);
       expr();
       break;
     }
@@ -1366,20 +1351,20 @@ fusionParser::TypeobjectsContext* fusionParser::typeobjects() {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(125);
+    setState(122);
     typeobject();
-    setState(131);
+    setState(128);
     _errHandler->sync(this);
 
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 21, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 19, _ctx)) {
     case 1: {
-      setState(127); 
+      setState(124); 
       _errHandler->sync(this);
       alt = 1;
       do {
         switch (alt) {
           case 1: {
-                setState(126);
+                setState(123);
                 typeobject();
                 break;
               }
@@ -1387,9 +1372,9 @@ fusionParser::TypeobjectsContext* fusionParser::typeobjects() {
         default:
           throw NoViableAltException(this);
         }
-        setState(129); 
+        setState(126); 
         _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 20, _ctx);
+        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 18, _ctx);
       } while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER);
       break;
     }
@@ -1461,7 +1446,7 @@ fusionParser::TypeobjectContext* fusionParser::typeobject() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(133);
+    setState(130);
     _la = _input->LA(1);
     if (!(_la == fusionParser::STR
 

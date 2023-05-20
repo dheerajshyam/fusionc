@@ -1,3 +1,9 @@
+// Created by Dheeraj Shyam on 16/05/23.
+
+#ifndef FUSIONC_INIT_H
+#define FUSIONC_INIT_H
+
+#pragma once
 
 #include <iostream>
 #include <vector>
@@ -36,3 +42,5 @@ namespace PyInterface
         PyObject* method(const string& method_name, PyObject* args);
     };
 }
+
+#endif

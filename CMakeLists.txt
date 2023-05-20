@@ -13,11 +13,9 @@ set_target_properties(antlr4-runtime PROPERTIES
 find_package(Python COMPONENTS Development REQUIRED)
 find_package(PythonLibs REQUIRED)
 
-add_library(pyinterface SHARED PythonInterface/__init__.cpp)
+add_library(pyinterface PythonInterface/__init__.cpp)
 target_include_directories(pyinterface PRIVATE ${PYTHON_INCLUDE_DIRS})
-target_link_libraries(pyinterface ${Python_LIBRARIES})
+target_link_libraries(pyinterface PRIVATE ${Python_LIBRARIES})
 
-add_executable(fusionc fusionc.cpp fusionLexer.cpp fusionParser.cpp)
-
-target_include_directories(fusionc PUBLIC ${PYTHON_INCLUDE_DIRS})
-target_link_libraries(fusionc antlr4-runtime)
+add_executable(fusionc fusionc.cpp fusionLexer.cpp fusionParser.cpp base.cpp)
+target_link_libraries(fusionc PRIVATE antlr4-runtime)

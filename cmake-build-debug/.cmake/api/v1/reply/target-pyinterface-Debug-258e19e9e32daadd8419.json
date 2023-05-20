@@ -1,8 +1,9 @@
 {
+	"archive" : {},
 	"artifacts" : 
 	[
 		{
-			"path" : "libpyinterface.dylib"
+			"path" : "libpyinterface.a"
 		}
 	],
 	"backtrace" : 1,
@@ -11,7 +12,6 @@
 		"commands" : 
 		[
 			"add_library",
-			"target_link_libraries",
 			"target_include_directories"
 		],
 		"files" : 
@@ -32,12 +32,6 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 18,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
 				"line" : 17,
 				"parent" : 0
 			}
@@ -49,22 +43,16 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fPIC -fcolor-diagnostics"
+					"fragment" : "-g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=13.2 -fcolor-diagnostics"
 				},
 				{
 					"fragment" : "-std=gnu++20"
 				}
 			],
-			"defines" : 
-			[
-				{
-					"define" : "pyinterface_EXPORTS"
-				}
-			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 2,
 					"path" : "/Library/Frameworks/Python.framework/Versions/3.11/include/python3.11"
 				}
 			],
@@ -84,24 +72,8 @@
 		}
 	],
 	"id" : "pyinterface::@6890427a1f51a3e7e1df",
-	"link" : 
-	{
-		"commandFragments" : 
-		[
-			{
-				"fragment" : "",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 2,
-				"fragment" : "/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/lib/libpython3.11.dylib",
-				"role" : "libraries"
-			}
-		],
-		"language" : "CXX"
-	},
 	"name" : "pyinterface",
-	"nameOnDisk" : "libpyinterface.dylib",
+	"nameOnDisk" : "libpyinterface.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -126,5 +98,5 @@
 			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "SHARED_LIBRARY"
+	"type" : "STATIC_LIBRARY"
 }

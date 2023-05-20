@@ -3,6 +3,8 @@
 #ifndef FUSIONC_BASE_H
 #define FUSIONC_BASE_H
 
+#pragma once
+
 #include "nodes.h"
 
 class Visitor : public fusionBaseVisitor
