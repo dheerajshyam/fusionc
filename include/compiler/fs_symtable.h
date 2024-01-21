@@ -3,7 +3,7 @@
 #ifndef FUSIONC_FS_SYMTABLE_H
 #define FUSIONC_FS_SYMTABLE_H
 
-#include "fsparser.h"
+#include "fs_ast_builder.h"
 
 namespace fusion_symtable {
 
