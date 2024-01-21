@@ -71,11 +71,9 @@ namespace fusion_deps {
 void FsState_AddState(
     map<string, fusion_deps::fusion_dfa::fs_state*> &,
         fusion_deps::fusion_dfa::State*);
-
 void clean_states(map<string, fusion_deps::fusion_dfa::fs_state*>);
-
-
 void FsIO_Print(FILE*, fusion_deps::fs_var const&);
+
 any FS_VarGet(fusion_deps::fs_var const&);
 
 fusion_deps::fs_var FsVal_ToFsVar(any const& val);
