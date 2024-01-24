@@ -21,7 +21,7 @@ public:
     LCPAREN = 39, RCPAREN = 40, LPAREN = 41, RPAREN = 42, EQUALS_TO = 43, 
     GT = 44, GTE = 45, LT = 46, LTE = 47, PLUS = 48, MINUS = 49, STAR = 50, 
     SLASH = 51, PERCENT = 52, COMMA = 53, COLON = 54, DOT = 55, INCREMENT = 56, 
-    DECREMENT = 57, POWER = 58, FLOOR = 59, EOT = 60, WS = 61
+    DECREMENT = 57, POWER = 58, FLOOR = 59, EOT = 60, COMMENT = 61, WS = 62
   };
 
   explicit fsLexer(antlr4::CharStream *input);

@@ -1,44 +1,93 @@
 #pragma once
 
-#include "antlr4-runtime.h"
-#include "fsParser.h"
 #include "fs_ast_nodes.h"
+#include "fsParser.h"
 
-
+/**
+ * This class defines an abstract visitor for a parse tree
+ * produced by fsParser.
+ */
 class  fsVisitor : public antlr4::tree::AbstractParseTreeVisitor {
 public:
 
+  /**
+   * Visit parse trees produced by fsParser.
+   */
     virtual fs_ast_nodes::Node* visitStart(fsParser::StartContext *context) = 0;
 
     virtual fs_ast_nodes::Node* visitExpr(fsParser::ExprContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitTernaryExpr(fsParser::TernaryExprContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitBinary(fsParser::BinaryContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitTernary(fsParser::TernaryContext *context) = 0;
 
     virtual fs_ast_nodes::Node* visitBinaryExpr(fsParser::BinaryExprContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitVar_assign(fsParser::Var_assignContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitIdenVarAssign(fsParser::IdenVarAssignContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitOr_op(fsParser::Or_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitThisVarAssign(fsParser::ThisVarAssignContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitIs_not_op(fsParser::Is_not_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitIsNot(fsParser::IsNotContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitIsnt_op(fsParser::Isnt_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitOrIsNot(fsParser::OrIsNotContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitAnd_op(fsParser::And_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitIsnt(fsParser::IsntContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitGt_op(fsParser::Gt_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitIsNot_IsNt(fsParser::IsNot_IsNtContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitAdd_op(fsParser::Add_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitAnd(fsParser::AndContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitMul_op(fsParser::Mul_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitIsnt_And(fsParser::Isnt_AndContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitExponent_op(fsParser::Exponent_opContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitAnd_Gt(fsParser::And_GtContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitUnaryExpr(fsParser::UnaryExprContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitGt(fsParser::GtContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitAdd(fsParser::AddContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitGt_Add(fsParser::Gt_AddContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitAdd_Mul(fsParser::Add_MulContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitMul(fsParser::MulContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitSub_Mul(fsParser::Sub_MulContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitDiv_Exp(fsParser::Div_ExpContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitExponent(fsParser::ExponentContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitMul_Exp(fsParser::Mul_ExpContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitPercent_Exp(fsParser::Percent_ExpContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitFloor_Exp(fsParser::Floor_ExpContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitExponent_Unary(fsParser::Exponent_UnaryContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitUnary(fsParser::UnaryContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitUnary_Object(fsParser::Unary_ObjectContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitFunc_Call(fsParser::Func_CallContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitVarDecl(fsParser::VarDeclContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitClassObjInit(fsParser::ClassObjInitContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitPositfication(fsParser::PositficationContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitNegitification(fsParser::NegitificationContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitPointer_Access(fsParser::Pointer_AccessContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitParenthesised(fsParser::ParenthesisedContext *context) = 0;
 
     virtual fs_ast_nodes::Node* visitFunc_call(fsParser::Func_callContext *context) = 0;
 
-    virtual fs_ast_nodes::Node* visitParams(fsParser::ParamsContext *context) = 0;
+    virtual fs_ast_nodes::Node* visitUniParams(fsParser::UniParamsContext *context) = 0;
+
+    virtual fs_ast_nodes::Node* visitMultiParams(fsParser::MultiParamsContext *context) = 0;
 
     virtual fs_ast_nodes::Node* visitParam(fsParser::ParamContext *context) = 0;
 
