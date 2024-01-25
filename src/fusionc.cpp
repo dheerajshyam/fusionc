@@ -21,23 +21,14 @@ int main(int argc, char* argv[]) {
         for (std::string line; std::getline(infile, line);)
             code.str_val += line + "\n";
 
-        auto stream = new antlr4::ANTLRInputStream(
-        any_cast<std::string>(FS_VarGet(code))
-        );
+        auto lexer = new fusion_lexer::Lexer();
+        lexer->set_code(code);
+        lexer->lex(code);
 
-        auto lexer = new fsLexer(stream);
-        auto tokenStream = new antlr4::CommonTokenStream(lexer);
+        auto parser = new fusion_parser::Parser(lexer);
+        parser->parse();
 
-        tokenStream->fill();
-
-        auto tokens =  tokenStream->getTokens();
-
-        for(auto const &token : tokens)
-            cout << token->toString() << endl;
-
-        delete tokenStream;
-        delete lexer;
-        delete stream;
+        delete parser;
     }
 
     return 0;
