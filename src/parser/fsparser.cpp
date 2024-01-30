@@ -5,7 +5,7 @@ namespace fusion_parser {
         this->lexer = lexer;
     }
 
-    void Parser::parse() {
+    void* Parser::start() {
         for(auto const& token : lexer->get_tokens())
             cout << token->type << endl;
     }

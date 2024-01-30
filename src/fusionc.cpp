@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
 
         if(!std::filesystem::exists(filename)) {
             FsIO_Print(stderr, FsVal_ToFsVar(
-               any(string("error: file '" + filename + "' not found!\n"))
+           any(string("error: file '" + filename + "' not found!\n"))
             ));
             exit(1);
         }
@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
         lexer->lex(code);
 
         auto parser = new fusion_parser::Parser(lexer);
-        parser->parse();
+        parser->start();
 
         delete parser;
     }
