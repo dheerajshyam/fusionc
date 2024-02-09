@@ -2,41 +2,21 @@
 
 namespace fusion_parser {
 
-    // Cst node related code.
-    void ExprCstNode::setTernExpr(
-        fusion_parser::fs_cst *node) {
-        this->_ternExpr = node;
-    }
-
-    fs_cst *ExprCstNode::ternaryExpr() {
-        return this->_ternExpr;
-    }
-
-    void TernaryExprCstNode::setTernExpr(
-        fusion_parser::fs_cst *node, int index) {
-        this->ternExpr[index] = node;
-    }
-
-    fs_cst *TernaryExprCstNode::ternaryExpr(int index) {
-        if(index > 1)
-            return nullptr;
-        return this->ternExpr[index];
-    }
-
-    fs_cst *TernaryExprCstNode::binaryExpr() {
-        return this->_binExpr;
-    }
-
-    void TernaryExprCstNode::setBinExpr(
-        fusion_parser::fs_cst *node) {
-        this->_binExpr = node;
-    }
-
     // Parser related code.
     Parser::Parser(fusion_lexer::Lexer *lexer) {
         this->lexer = lexer;
         this->it = this->lexer->get_tokens().begin();
         this->end = this->lexer->get_tokens().end();
+    }
+
+    void Parser::eot() {
+        auto token = *it;
+        while (token->type == "EOT") {
+            it++;
+            if(it == end)
+                break;
+            token = *it;
+        }
     }
 
     fs_cst* Parser::param() {
@@ -48,46 +28,94 @@ namespace fusion_parser {
     }
 
     fs_cst* Parser::func_call() {
+        object();
+    }
+
+    fs_cst* Parser::string_() {
+
+        auto token = *it;
+        auto* node = new fs_strCst();
+
+        while(token->type == "STRING") {
+            auto value = any_cast<std::string>(
+                    FS_VarGet(token->value)
+            );
+
+            node->pushString(value);
+
+            it++;
+
+            eot();
+
+            if(it == end)
+                break;
+
+            token = *it;
+        }
+
+        return node;
+    }
+
+    fs_cst* Parser::typeobject() {
+        auto token = *it;
+
+
+        if(token->type == "STRING") {
+            auto* node = string_();
+        } else if(token->type == "NUMBER") {
+            auto value = any_cast<std::string>(
+            FS_VarGet(token->value)
+            );
+
+            auto* node = new fs_typeobjCst();
+            node->setNumber(value);
+
+            return node;
+        } else if(token->type == "BOOL") {
+            auto value = any_cast<std::string>(
+            FS_VarGet(token->value)
+            );
+        }
     }
 
     fs_cst* Parser::object() {
-
+        typeobject();
     }
 
     fs_cst* Parser::unaryExpr() {
-
+        func_call();
     }
 
     fs_cst* Parser::exponent_op() {
-
+        unaryExpr();
     }
 
     fs_cst* Parser::mul_op() {
-
+        exponent_op();
     }
 
     fs_cst* Parser::add_op() {
-
+        mul_op();
     }
 
     fs_cst* Parser::gt_op() {
-
+        add_op();
     }
 
     fs_cst* Parser::and_op() {
-
+        gt_op();
     }
 
     fs_cst *Parser::isnt_op() {
-
+        and_op();
     }
 
     fs_cst* Parser::is_not_op() {
-
+        isnt_op();
     }
 
     fs_cst* Parser::or_op() {
-
+        is_not_op();
     }
 
     fs_cst* Parser::binaryExpr() {
@@ -106,9 +134,9 @@ namespace fusion_parser {
         fusion_lexer::fs_token* nextToken;
         std::string nextTokType, nextTokVal;
 
-        it++;
-
         node->setBinExpr(binaryExpr());
+
+        it++;
 
         nextToken = *it;
         nextTokType = nextToken->type;
@@ -133,7 +161,8 @@ namespace fusion_parser {
                 delete this->lexer;
                 FsIO_Print(stderr, FsVal_ToFsVar(
                any(string("syntax error: expected else after if in"
-                  "ternary expression in line " + std::to_string(nextToken->lineno) + "."))
+                  "ternary expression in line " + std::to_string(
+                  nextToken->lineno) + "."))
                 ));
                 exit(0);
             }
@@ -151,7 +180,10 @@ namespace fusion_parser {
     }
 
     fs_cst* Parser::start() {
-        return expr();
+        while(it != end) {
+            expr();
+            it++;
+        }
     }
 
     Parser::~Parser() {
