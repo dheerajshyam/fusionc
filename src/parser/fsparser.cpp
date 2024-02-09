@@ -58,28 +58,34 @@ namespace fusion_parser {
 
     fs_cst* Parser::typeobject() {
         auto token = *it;
+        auto* node = new fs_typeobjCst();
 
-
-        if(token->type == "STRING") {
-            auto* node = string_();
-        } else if(token->type == "NUMBER") {
+        if(token->type == "STRING")
+            node->setStr(string_());
+        else if(token->type == "NUMBER") {
             auto value = any_cast<std::string>(
             FS_VarGet(token->value)
             );
 
-            auto* node = new fs_typeobjCst();
-            node->setNumber(value);
-
-            return node;
+            node->setValue(value, "number");
         } else if(token->type == "BOOL") {
             auto value = any_cast<std::string>(
             FS_VarGet(token->value)
             );
-        }
+
+            node->setValue(value, "bool");
+        } else if(token->type == "NIL") {
+            auto value = any_cast<std::string>(
+            FS_VarGet(token->value)
+            );
+
+            node->setValue(value, "nil");
+        } else return nullptr;
+
+        return node;
     }
 
     fs_cst* Parser::object() {
-        typeobject();
     }
 
     fs_cst* Parser::unaryExpr() {

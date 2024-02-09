@@ -45,19 +45,20 @@ namespace fsparser_deps {
     }
 
     void StringCstNode::pushString(
-            std::string str) {
-        this->value.push_back(str);
+            std::string str_) {
+        this->value.push_back(str_);
     }
 
     // TypeObject CST.
     void TypeObjectCstNode::setStr(
-        fsparser_deps::fs_cst *strValue) {
-        this->strValue = strValue;
+        fsparser_deps::fs_cst *strValue_) {
+        this->strValue = strValue_;
+        this->type = "string";
     }
 
     void TypeObjectCstNode::setValue(
-        std::string value, std::string type) {
-        this->value = value;
-        this->type = type;
+        std::string const &value_, std::string const &type_) {
+        this->value = value_;
+        this->type = type_;
     }
 }

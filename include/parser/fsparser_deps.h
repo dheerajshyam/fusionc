@@ -91,7 +91,7 @@ namespace fsparser_deps {
         std::string NIL();
 
         void setStr(fs_cst*);
-        void setValue(std::string, std::string)
+        void setValue(std::string const &,std::string const &)
 
     } fs_typeobjCst;
 }
