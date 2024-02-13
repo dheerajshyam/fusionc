@@ -10,38 +10,25 @@ namespace fusion_parser {
     }
 
     void Parser::eot() {
-        auto token = *it;
-        while (token->type == "EOT") {
-            it++;
-            if(it == end)
-                break;
-            token = *it;
+        if(it != end) {
+            auto token = *it;
+            if(token->type == "EOT") {
+                it++;
+                eot();
+            }
         }
-    }
-
-    fs_cst* Parser::param() {
-
-    }
-
-    fs_cst* Parser::params() {
-
-    }
-
-    fs_cst* Parser::func_call() {
-        object();
     }
 
     fs_cst* Parser::string_() {
 
         auto token = *it;
-        auto* node = new fs_strCst();
 
         while(token->type == "STRING") {
             auto value = any_cast<std::string>(
-                    FS_VarGet(token->value)
+            FS_VarGet(token->value)
             );
 
-            node->pushString(value);
+            cout << "STRING: " << value << endl;
 
             it++;
 
@@ -52,40 +39,132 @@ namespace fusion_parser {
 
             token = *it;
         }
-
-        return node;
     }
 
     fs_cst* Parser::typeobject() {
+
+        cout << "typeobject -> ";
+
         auto token = *it;
-        auto* node = new fs_typeobjCst();
 
         if(token->type == "STRING")
-            node->setStr(string_());
+            string_();
         else if(token->type == "NUMBER") {
             auto value = any_cast<std::string>(
             FS_VarGet(token->value)
             );
 
-            node->setValue(value, "number");
+            cout << "NUMBER: " << value << endl;
         } else if(token->type == "BOOL") {
             auto value = any_cast<std::string>(
             FS_VarGet(token->value)
             );
 
-            node->setValue(value, "bool");
+            cout << "BOOL: " << value << endl;
         } else if(token->type == "NIL") {
             auto value = any_cast<std::string>(
             FS_VarGet(token->value)
             );
 
-            node->setValue(value, "nil");
-        } else return nullptr;
-
-        return node;
+            cout << "NIL" << endl;
+        }
     }
 
     fs_cst* Parser::object() {
+
+        cout << "object -> ";
+
+        auto token = *it;
+        auto tokenVal = any_cast<std::string>(
+        FS_VarGet(token->value)
+        );
+
+        if(token->type == "IDENTIFIER") {
+            cout << "IDENTIFIER: " << tokenVal << endl;
+            it++;
+        }
+
+    }
+
+    fs_cst* Parser::param() {
+
+        cout << "param -> ";
+
+        ternaryExpr();
+    }
+
+    fs_cst* Parser::params() {
+
+        cout << "params -> ";
+
+        fusion_lexer::fs_token* nextToken;
+        std::string nextTokenVal;
+
+        param();
+
+        if(it != end) {
+            it++;
+
+            nextToken = *it;
+            nextTokenVal = any_cast<std::string>(
+            FS_VarGet(nextToken->value)
+            );
+
+            if (nextTokenVal == ",") {
+                cout << endl;
+                it++;
+                params();
+            }
+        }
+    }
+
+    fs_cst* Parser::func_call() {
+
+        cout << "func_call -> ";
+
+        fusion_lexer::fs_token* nextToken;
+        std::string nextTokenVal;
+
+        object();
+
+        nextToken = *it;
+        nextTokenVal = any_cast<std::string>(
+        FS_VarGet(nextToken->value)
+        );
+
+        if(nextTokenVal == "(") {
+
+            if(it != end) {
+
+                it++;
+
+                params();
+
+                nextToken = *it;
+                nextTokenVal = any_cast<std::string>(
+                FS_VarGet(nextToken->value)
+                );
+
+                if (nextTokenVal != ")") {
+                    FsIO_Print(stderr, FsVal_ToFsVar(
+                    any(string("syntax error: unexpected end-of-input while parsing "
+                       "function call in line " + std::to_string(
+                    nextToken->lineno) + ", expecting ')' to recover the error."))
+                    ));
+                    delete this->lexer;
+                    exit(0);
+                }
+            } else {
+                FsIO_Print(stderr, FsVal_ToFsVar(
+                any(string("syntax error: unexpected end-of-input while parsing "
+                   "function call in line " + std::to_string(
+                nextToken->lineno) + ", expecting ')' to recover the error."))
+                ));
+                delete this->lexer;
+                exit(0);
+            }
+
+        } else params();
     }
 
     fs_cst* Parser::unaryExpr() {
@@ -125,22 +204,15 @@ namespace fusion_parser {
     }
 
     fs_cst* Parser::binaryExpr() {
-        auto* node = new BinaryExprCstNode();
-        node->type = CstNodeType::BinaryExpr;
-        node->setOrOp(or_op());
-
-        return node;
+        or_op();
     }
 
     fs_cst* Parser::ternaryExpr() {
 
-        auto* node = new fs_ternExprCst();
-        node->type = CstNodeType::TernaryExpr;
-
         fusion_lexer::fs_token* nextToken;
         std::string nextTokType, nextTokVal;
 
-        node->setBinExpr(binaryExpr());
+        binaryExpr();
 
         it++;
 
@@ -153,7 +225,7 @@ namespace fusion_parser {
             && nextTokVal == "if") {
             it++;
 
-            node->setTernExpr(ternaryExpr(), 0);
+            ternaryExpr();
 
             nextToken = *it;
             nextTokType = nextToken->type;
@@ -162,7 +234,7 @@ namespace fusion_parser {
 
             if(nextTokType == "KEYWORD"
                 && nextTokVal == "else")
-                node->setTernExpr(ternaryExpr(), 1);
+                ternaryExpr();
             else {
                 delete this->lexer;
                 FsIO_Print(stderr, FsVal_ToFsVar(
@@ -173,23 +245,15 @@ namespace fusion_parser {
                 exit(0);
             }
         }
-
-        return node;
     }
 
     fs_cst* Parser::expr() {
-        auto* node = new fs_exprCst();
-        node->type = CstNodeType::Expr;
-        node->setTernExpr(ternaryExpr());
-
-        return node;
+        ternaryExpr();
     }
 
     fs_cst* Parser::start() {
-        while(it != end) {
-            expr();
-            it++;
-        }
+        expr();
+        it++;
     }
 
     Parser::~Parser() {
