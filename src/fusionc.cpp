@@ -25,10 +25,10 @@ int main(int argc, char* argv[]) {
         lexer->set_code(code);
         lexer->lex(code);
 
-        auto parser = new fusion_parser::Parser(lexer);
-        parser->start();
+//        auto parser = new fusion_parser::Parser(lexer);
+//        parser->start();
 
-        delete parser;
+        delete lexer;
     }
 
     return 0;

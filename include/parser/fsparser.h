@@ -23,7 +23,9 @@ namespace fusion_parser {
         void eot();
 
         fs_cst* param();
+        fs_cst* params_tail();
         fs_cst* params();
+        fs_cst* func_call_tail();
         fs_cst* func_call();
         fs_cst* string_();
         fs_cst* typeobject();
@@ -32,6 +34,7 @@ namespace fusion_parser {
         fs_cst* exponent_op();
         fs_cst* mul_op();
         fs_cst* add_op();
+        fs_cst* bitwise_op();
         fs_cst* gt_op();
         fs_cst* and_op();
         fs_cst* isnt_op();

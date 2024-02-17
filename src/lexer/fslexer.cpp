@@ -434,7 +434,6 @@ void fusion_lexer::Lexer::lex(fusion_deps::fs_var const &input) {
 
                     case((int) '+'):
                         tokobj->type = "PLUS";
-                        tokobj->value = string(1, elem);
                         tokobj->lexpos = this->lexpos;
                         tokobj->lineno = this->lineno;
 
@@ -447,12 +446,10 @@ void fusion_lexer::Lexer::lex(fusion_deps::fs_var const &input) {
                             it++;
 
                             tokobj->type = "RANGE";
-                            tokobj->value = string("->");
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         } else {
                             tokobj->type = "MINUS";
-                            tokobj->value = string(1, elem);
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         }
@@ -467,12 +464,10 @@ void fusion_lexer::Lexer::lex(fusion_deps::fs_var const &input) {
                             it++;
 
                             tokobj->type = "POWER";
-                            tokobj->value = string("**");
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         } else {
                             tokobj->type = "STAR";
-                            tokobj->value = string(1, elem);
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         }
@@ -485,12 +480,10 @@ void fusion_lexer::Lexer::lex(fusion_deps::fs_var const &input) {
                             it++;
 
                             tokobj->type = "FLOOR";
-                            tokobj->value = string("//");
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         } else {
                             tokobj->type = "SLASH";
-                            tokobj->value = string(1, elem);
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         }
@@ -500,7 +493,6 @@ void fusion_lexer::Lexer::lex(fusion_deps::fs_var const &input) {
 
                     case((int) '%'):
                         tokobj->type = "PERCENT";
-                        tokobj->value = string(1, elem);
                         tokobj->lexpos = this->lexpos;
                         tokobj->lineno = this->lineno;
 
@@ -508,16 +500,20 @@ void fusion_lexer::Lexer::lex(fusion_deps::fs_var const &input) {
                         break;
 
                     case((int) '>'):
-                        if((it + 1) != end && *(it+1) == '=') {
+                        if((it + 1) != end &&
+                            (*(it+1) == '=' ||
+                                *(it + 1) == '>')) {
                             it++;
 
-                            tokobj->type = "GTE";
-                            tokobj->value = string(1, elem);
+                            if(*it == '=')
+                                tokobj->type = "GTE";
+                            else if(*it == '>')
+                                tokobj->type = "BW_RIGHT";
+
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         } else {
                             tokobj->type = "GT";
-                            tokobj->value = string(1, elem);
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         }
@@ -526,16 +522,21 @@ void fusion_lexer::Lexer::lex(fusion_deps::fs_var const &input) {
                         break;
 
                     case((int) '<'):
-                        if((it + 1) != end && *(it+1) == '=') {
+                        if((it + 1) != end &&
+                            (*(it+1) == '=' ||
+                                *(it+1) == '<')) {
                             it++;
 
-                            tokobj->type = "LTE";
+                            if(*it == '=')
+                                tokobj->type = "LTE";
+                            else if(*it == '<')
+                                tokobj->type = "BW_LEFT";
+
                             tokobj->value = string(1, elem);
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         } else {
                             tokobj->type = "LT";
-                            tokobj->value = string(1, elem);
                             tokobj->lexpos = this->lexpos;
                             tokobj->lineno = this->lineno;
                         }

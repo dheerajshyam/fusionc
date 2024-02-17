@@ -80,18 +80,22 @@ namespace fsparser_deps {
     // TypeObject CST Class.
     typedef class TypeObjectCstNode : public CstNode {
     protected:
-        fs_cst* strValue;
+        fs_cst *strValue;
         std::string value;
         std::string type;
     public:
 
-        fs_cst* string();
+        fs_cst *string();
+
         std::string NUMBER();
+
         std::string BOOL();
+
         std::string NIL();
 
-        void setStr(fs_cst*);
-        void setValue(std::string const &,std::string const &)
+        void setStr(fs_cst *);
+
+        void setValue(std::string const &, std::string const &);
 
     } fs_typeobjCst;
 }
