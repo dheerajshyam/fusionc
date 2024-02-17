@@ -22,13 +22,12 @@ namespace fusion_parser {
 
         void eot();
 
-        fs_cst* param();
         fs_cst* params_tail();
+        fs_cst* param();
         fs_cst* params();
-        fs_cst* func_call_tail();
-        fs_cst* func_call();
         fs_cst* string_();
         fs_cst* typeobject();
+        fs_cst* object_tail();
         fs_cst* object();
         fs_cst* unaryExpr();
         fs_cst* exponent_op();

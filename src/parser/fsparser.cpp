@@ -22,8 +22,6 @@ namespace fusion_parser {
         fusion_lexer::fs_token* nextToken;
         std::string nextTokenVal;
 
-        cout << "string -> ";
-
         if(it != end) {
             nextToken = *it;
             nextTokenVal = any_cast<std::string>(
@@ -31,39 +29,19 @@ namespace fusion_parser {
             );
 
             if(nextToken->type == "STRING") {
-                cout << "STRING: " << nextTokenVal << endl;
+                cout << "string " << endl;
+                cout << "STRING (" << nextTokenVal << ")" << endl;
 
                 it++;
 
-                if(it != end) {
-                    nextToken = *it;
-                    nextTokenVal = any_cast<std::string>(
-                    FS_VarGet(nextToken->value)
-                    );
-
-                    if(nextToken->type == "EOT") {
-                        if(nextTokenVal == ";") {
-                            FsIO_Print(stderr, FsVal_ToFsVar(
-                            any(string("syntax error: unexpected ';' found "
-                            "in line " + std::to_string(nextToken->lineno) + "."))
-                            ));
-
-                            delete this->lexer;
-                            exit(0);
-                        } else {
-                            eot();
-                            string_();
-                        }
-
-                    } else string_();
-                }
+                string_();
             }
         }
     }
 
     fs_cst* Parser::typeobject() {
 
-        cout << "typeobject -> ";
+        cout << "typeobject" << endl;
 
         auto token = *it;
 
@@ -74,7 +52,7 @@ namespace fusion_parser {
             FS_VarGet(token->value)
             );
 
-            cout << "NUMBER: " << value << endl;
+            cout << "NUMBER (" << value << ")" << endl;
             it++;
 
         } else if(token->type == "BOOL") {
@@ -96,93 +74,68 @@ namespace fusion_parser {
         }
     }
 
-    fs_cst* Parser::object() {
-
-        cout << "object -> ";
-
+    fs_cst* Parser::params_tail() {
         if(it != end) {
-            auto token = *it;
-            auto tokenVal = any_cast<std::string>(
-            FS_VarGet(token->value)
-            );
-
-            if(token->type == "IDENTIFIER") {
-                cout << "IDENTIFIER: " << tokenVal << endl;
-                it++;
-            } else typeobject();
-        }
-    }
-
-    fs_cst* Parser::param() {
-
-        cout << "param -> ";
-
-        ternaryExpr();
-    }
-
-    fs_cst *Parser::params_tail() {
-        if(it != end) {
-
-            cout << "params_tail -> ";
 
             fusion_lexer::fs_token* nextToken;
             std::string nextTokenVal;
 
             nextToken = *it;
-            nextTokenVal = any_cast<std::string>(
-            FS_VarGet(nextToken->value)
-            );
 
-            if (nextTokenVal == ",") {
+            if(nextToken->type != "EOT") {
+                nextTokenVal = any_cast<std::string>(
+                FS_VarGet(nextToken->value)
+                );
 
-                it++;
+                if (nextTokenVal == ",") {
 
-                if(it != end)
-                    params();
-                else {
+                    it++;
 
-                    FsIO_Print(stderr, FsVal_ToFsVar(
-                    any(string("syntax error: invalid termination, expecting to"
-                    "remove ',' or pass a parameter after ',' inside function call "
-                    "in line" + std::to_string(nextToken->lineno) + "."))
-                    ));
-
-                    delete this->lexer;
-                    exit(0);
+                    if(it != end) {
+                        cout << "params_tail" << endl;
+                        params();
+                    }
                 }
             }
         }
     }
 
-    fs_cst* Parser::params() {
+    fs_cst* Parser::param() {
 
-        cout << "params -> ";
+        cout << "param" << endl;
 
-        param();
-
-        params_tail();
+        ternaryExpr();
     }
 
-    fs_cst *Parser::func_call_tail() {
+    fs_cst* Parser::params() {
+
+        if(it != end) {
+            if ((*it)->type != "EOT") {
+                cout << "params" << endl;
+                param();
+                params_tail();
+            }
+        }
+    }
+
+    fs_cst* Parser::object_tail() {
 
         fusion_lexer::fs_token* nextToken;
         std::string nextTokenVal;
 
-
         if(it != end) {
-
-            cout << "func_call_tail -> ";
+            cout << "object_tail" << endl;
 
             nextToken = *it;
             nextTokenVal = any_cast<std::string>(
             FS_VarGet(nextToken->value)
             );
 
-            if(nextTokenVal == "(") {
+            if(nextToken->type != "EOT") {
+                if(nextTokenVal == "(") {
 
-                it++;
+                    it++;
 
-                if(it != end) {
                     params();
 
                     if(it != end) {
@@ -191,35 +144,51 @@ namespace fusion_parser {
                         FS_VarGet(nextToken->value)
                         );
 
-                        if (nextTokenVal != ")") goto error;
-                    } else goto error;
+                        if (nextTokenVal != ")") {
+                            FsIO_Print(stderr, FsVal_ToFsVar(
+                            any(string("syntax error: unexpected "
+                            "end-of-input found, expecting ')' in line " +
+                               std::to_string(nextToken->lineno) + "."))
+                            ));
 
-                } else {
-                    error: FsIO_Print(stderr, FsVal_ToFsVar(
-                    any(string("syntax error: unexpected end-of-input while parsing "
-                    "function call in line " + std::to_string(
-                    nextToken->lineno) + ", expecting ')' to recover the error."))
-                    ));
+                            delete this->lexer;
+                            exit(0);
+                        }
+                    } else {
+                        FsIO_Print(stderr, FsVal_ToFsVar(
+                        any(string("syntax error: unexpected "
+                        "end-of-input found, expecting ')' in line " +
+                           std::to_string(nextToken->lineno) + "."))
+                        ));
 
-                    delete this->lexer;
-                    exit(0);
+                        delete this->lexer;
+                        exit(0);
+                    }
                 }
-
-            } else params();
+            }
         }
     }
 
-    fs_cst* Parser::func_call() {
+    fs_cst* Parser::object() {
 
-        cout << "func_call -> ";
+        cout << "object" << endl;
 
-        object();
+        if(it != end) {
+            auto token = *it;
+            auto tokenVal = any_cast<std::string>(
+            FS_VarGet(token->value)
+            );
 
-        func_call_tail();
+            if(token->type == "IDENTIFIER") {
+                cout << "IDENTIFIER (" << tokenVal << ") " << endl;
+                it++;
+            }
+        }
     }
 
     fs_cst* Parser::unaryExpr() {
-        func_call();
+        object();
+        object_tail();
     }
 
     fs_cst* Parser::exponent_op() {
@@ -269,37 +238,37 @@ namespace fusion_parser {
 
         binaryExpr();
 
-//        it++;
-//
-//        nextToken = *it;
-//        nextTokType = nextToken->type;
-//        nextTokVal = any_cast<std::string>(
-//        FS_VarGet(nextToken->value));
-//
-//        if(nextTokType == "KEYWORD"
-//            && nextTokVal == "if") {
-//            it++;
-//
-//            ternaryExpr();
-//
-//            nextToken = *it;
-//            nextTokType = nextToken->type;
-//            nextTokVal = any_cast<std::string>(
-//            FS_VarGet(nextToken->value));
-//
-//            if(nextTokType == "KEYWORD"
-//                && nextTokVal == "else")
-//                ternaryExpr();
-//            else {
-//                delete this->lexer;
-//                FsIO_Print(stderr, FsVal_ToFsVar(
-//               any(string("syntax error: expected else after if in"
-//                  "ternary expression in line " + std::to_string(
-//                  nextToken->lineno) + "."))
-//                ));
-//                exit(0);
-//            }
-//        }
+        it++;
+
+        nextToken = *it;
+        nextTokType = nextToken->type;
+        nextTokVal = any_cast<std::string>(
+        FS_VarGet(nextToken->value));
+
+        if(nextTokType == "KEYWORD"
+            && nextTokVal == "if") {
+            it++;
+
+            ternaryExpr();
+
+            nextToken = *it;
+            nextTokType = nextToken->type;
+            nextTokVal = any_cast<std::string>(
+            FS_VarGet(nextToken->value));
+
+            if(nextTokType == "KEYWORD"
+                && nextTokVal == "else")
+                ternaryExpr();
+            else {
+                delete this->lexer;
+                FsIO_Print(stderr, FsVal_ToFsVar(
+               any(string("syntax error: expected else after if in"
+                  "ternary expression in line " + std::to_string(
+                  nextToken->lineno) + "."))
+                ));
+                exit(0);
+            }
+        }
     }
 
     fs_cst* Parser::expr() {
