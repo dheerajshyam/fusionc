@@ -182,7 +182,7 @@ namespace fusion_parser {
             if(token->type == "IDENTIFIER") {
                 cout << "IDENTIFIER (" << tokenVal << ") " << endl;
                 it++;
-            }
+            } else typeobject();
         }
     }
 
@@ -232,43 +232,7 @@ namespace fusion_parser {
     }
 
     fs_cst* Parser::ternaryExpr() {
-
-        fusion_lexer::fs_token* nextToken;
-        std::string nextTokType, nextTokVal;
-
         binaryExpr();
-
-        it++;
-
-        nextToken = *it;
-        nextTokType = nextToken->type;
-        nextTokVal = any_cast<std::string>(
-        FS_VarGet(nextToken->value));
-
-        if(nextTokType == "KEYWORD"
-            && nextTokVal == "if") {
-            it++;
-
-            ternaryExpr();
-
-            nextToken = *it;
-            nextTokType = nextToken->type;
-            nextTokVal = any_cast<std::string>(
-            FS_VarGet(nextToken->value));
-
-            if(nextTokType == "KEYWORD"
-                && nextTokVal == "else")
-                ternaryExpr();
-            else {
-                delete this->lexer;
-                FsIO_Print(stderr, FsVal_ToFsVar(
-               any(string("syntax error: expected else after if in"
-                  "ternary expression in line " + std::to_string(
-                  nextToken->lineno) + "."))
-                ));
-                exit(0);
-            }
-        }
     }
 
     fs_cst* Parser::expr() {
