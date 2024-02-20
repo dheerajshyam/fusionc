@@ -19,7 +19,6 @@ namespace fusion_parser {
     public:
         explicit Parser(fusion_lexer::Lexer *);
 
-
         void eot();
 
         fs_cst* params_tail();

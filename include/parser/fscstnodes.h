@@ -122,7 +122,33 @@ namespace fsparser_deps {
     typedef class ObjectCstNode : public CstNode {
     public:
         std::string IDEN;
+        fs_cst* typeobject;
     } fs_objectCst;
+
+    // ObjectTail CST Class
+    typedef class ObjectTailCstNode : public CstNode {
+    public:
+        fs_cst* params;
+    } fs_objTailCst;
+
+    // Params CST Class
+    typedef class ParamsCstNode : public CstNode {
+    public:
+        fs_cst* param;
+        fs_cst* params_tail;
+    } fs_paramsCst;
+
+    // Param CST Class
+    typedef class ParamCstNode : public CstNode {
+    public:
+        fs_cst* ternaryExpr;
+    } fs_paramCst;
+
+    // ParamsTail CST Class
+    typedef class ParamsTailCstNode : public CstNode {
+    public:
+        fs_cst* params;
+    } fs_paramsTailCst;
 
     // String CST Class.
     typedef class StringCstNode : public CstNode {

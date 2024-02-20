@@ -2,6 +2,8 @@
 
 namespace fusion_parser {
 
+    vector<fs_cst*> nodes;
+
     Parser::Parser(fusion_lexer::Lexer *lexer) {
         this->lexer = lexer;
     }
@@ -96,15 +98,28 @@ namespace fusion_parser {
                 it++;
 
                 cout << "params_tail" << endl;
-                params();
+
+                auto node = new fs_paramsTailCst();
+                node->params = params();
+
+                nodes.push_back(node);
+                return node;
             }
         }
+
+        return nullptr;
     }
 
     fs_cst* Parser::param() {
 
         cout << "param" << endl;
-        ternaryExpr();
+
+        auto node = new fs_paramCst();
+        node->type = CstNodeType::Param;
+        node->ternaryExpr = ternaryExpr();
+
+        nodes.push_back(node);
+        return node;
     }
 
     fs_cst* Parser::params() {
@@ -132,7 +147,9 @@ namespace fusion_parser {
 
                 cout << "object_tail" << endl;
 
-                params();
+                auto node = new fs_objTailCst();
+                node->type = CstNodeType::ObjectTail;
+                node->params = params();
 
                 if(it != end) {
 
@@ -143,12 +160,20 @@ namespace fusion_parser {
                     FS_VarGet(currToken->value)
                     );
 
-                    if (currTokenVal != ")")
+                    if (currTokenVal != ")") {
+                        delete node;
                         goto error;
+                    }
 
                     it++;
 
-                } else goto error;
+                    nodes.push_back(node);
+                    return node;
+
+                } else {
+                    delete node;
+                    goto error;
+                }
             }
         }
 
@@ -158,7 +183,11 @@ namespace fusion_parser {
             FsIO_Print(stderr, FsVal_ToFsVar(
             any(string("syntax error: unexpected "
             "end-of-input found, expecting ')' in line " +
-               std::to_string(prevToken->lineno) + "."))
+               std::to_string(
+               prevToken != nullptr
+                    ? prevToken->lineno
+                    : currToken->lineno
+                ) + "."))
             ));
 
             delete this->lexer;
@@ -168,19 +197,33 @@ namespace fusion_parser {
 
     fs_cst* Parser::object() {
 
-        cout << "object" << endl;
-
         if(it != end) {
+            cout << "object" << endl;
+
+            auto node = new fs_objectCst();
+            node->type = CstNodeType::Object;
+
             auto token = *it;
             auto tokenVal = any_cast<std::string>(
             FS_VarGet(token->value)
             );
 
             if(token->type == "IDENTIFIER") {
+                node->IDEN = tokenVal;
                 cout << "IDENTIFIER (" << tokenVal << ") " << endl;
                 it++;
-            } else typeobject();
+
+                nodes.push_back(node);
+                return node;
+            } else {
+                node->typeobject = typeobject();
+
+                nodes.push_back(node);
+                return node;
+            }
         }
+
+        return nullptr;
     }
 
     fs_cst* Parser::unaryExpr() {
@@ -247,6 +290,8 @@ namespace fusion_parser {
     }
 
     Parser::~Parser() {
+        for(auto const &node : nodes)
+            delete node;
         delete this->lexer;
     }
 }
