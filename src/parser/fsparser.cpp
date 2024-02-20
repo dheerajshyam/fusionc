@@ -41,36 +41,41 @@ namespace fusion_parser {
 
     fs_cst* Parser::typeobject() {
 
-        cout << "typeobject" << endl;
+        if(it != end) {
+            auto token = *it;
 
-        auto token = *it;
+            if(token->type == "STRING") {
+                cout << "typeobject" << endl;
+                string_();
+            } else if(token->type == "NUMBER") {
+                auto value = any_cast<std::string>(
+                FS_VarGet(token->value)
+                );
 
-        if(token->type == "STRING")
-            string_();
-        else if(token->type == "NUMBER") {
-            auto value = any_cast<std::string>(
-            FS_VarGet(token->value)
-            );
+                cout << "typeobject" << endl;
+                cout << "NUMBER (" << value << ")" << endl;
+                it++;
 
-            cout << "NUMBER (" << value << ")" << endl;
-            it++;
+            } else if(token->type == "BOOL") {
+                auto value = any_cast<std::string>(
+                FS_VarGet(token->value)
+                );
 
-        } else if(token->type == "BOOL") {
-            auto value = any_cast<std::string>(
-            FS_VarGet(token->value)
-            );
+                cout << "typeobject" << endl;
+                cout << "BOOL (" << value << ")" << endl;
 
-            cout << "BOOL: " << value << endl;
-            it++;
+                it++;
 
-        } else if(token->type == "NIL") {
-            auto value = any_cast<std::string>(
-            FS_VarGet(token->value)
-            );
+            } else if(token->type == "NIL") {
+                auto value = any_cast<std::string>(
+                FS_VarGet(token->value)
+                );
 
-            cout << "NIL" << endl;
-            it++;
+                cout << "typeobject" << endl;
+                cout << "NIL" << endl;
+                it++;
 
+            }
         }
     }
 
@@ -82,20 +87,16 @@ namespace fusion_parser {
 
             nextToken = *it;
 
-            if(nextToken->type != "EOT") {
-                nextTokenVal = any_cast<std::string>(
-                FS_VarGet(nextToken->value)
-                );
+            nextTokenVal = any_cast<std::string>(
+            FS_VarGet(nextToken->value)
+            );
 
-                if (nextTokenVal == ",") {
+            if (nextTokenVal == ",") {
 
-                    it++;
+                it++;
 
-                    if(it != end) {
-                        cout << "params_tail" << endl;
-                        params();
-                    }
-                }
+                cout << "params_tail" << endl;
+                params();
             }
         }
     }
@@ -103,69 +104,65 @@ namespace fusion_parser {
     fs_cst* Parser::param() {
 
         cout << "param" << endl;
-
         ternaryExpr();
     }
 
     fs_cst* Parser::params() {
 
-        if(it != end) {
-            if ((*it)->type != "EOT") {
-                cout << "params" << endl;
-                param();
-                params_tail();
-            }
-        }
+        cout << "params" << endl;
+        param();
+        params_tail();
     }
 
     fs_cst* Parser::object_tail() {
 
-        fusion_lexer::fs_token* nextToken;
-        std::string nextTokenVal;
+        fusion_lexer::fs_token *prevToken = nullptr, *currToken;
+        std::string currTokenVal;
 
         if(it != end) {
-            cout << "object_tail" << endl;
 
-            nextToken = *it;
-            nextTokenVal = any_cast<std::string>(
-            FS_VarGet(nextToken->value)
+            currToken = *it;
+            currTokenVal = any_cast<std::string>(
+            FS_VarGet(currToken->value)
             );
 
-            if(nextToken->type != "EOT") {
-                if(nextTokenVal == "(") {
+            if(currTokenVal == "(") {
+
+                it++;
+
+                cout << "object_tail" << endl;
+
+                params();
+
+                if(it != end) {
+
+                    prevToken = currToken;
+
+                    currToken = *it;
+                    currTokenVal = any_cast<std::string>(
+                    FS_VarGet(currToken->value)
+                    );
+
+                    if (currTokenVal != ")")
+                        goto error;
 
                     it++;
 
-                    params();
-
-                    if(it != end) {
-                        nextToken = *it;
-                        nextTokenVal = any_cast<std::string>(
-                        FS_VarGet(nextToken->value)
-                        );
-
-                        if (nextTokenVal != ")") {
-                            FsIO_Print(stderr, FsVal_ToFsVar(
-                            any(string("syntax error: unexpected "
-                            "end-of-input found, expecting ')' in line " +
-                               std::to_string(nextToken->lineno) + "."))
-                            ));
-
-                            delete this->lexer;
-                            exit(0);
-                        }
-                    } else {
-                        FsIO_Print(stderr, FsVal_ToFsVar(
-                        any(string("syntax error: unexpected "
-                        "end-of-input found, expecting ')' in line " +
-                           std::to_string(nextToken->lineno) + "."))
-                        ));
-
-                        delete this->lexer;
-                        exit(0);
-                    }
-                }
+                } else goto error;
             }
+        }
+
+        return nullptr;
+
+        error: {
+            FsIO_Print(stderr, FsVal_ToFsVar(
+            any(string("syntax error: unexpected "
+            "end-of-input found, expecting ')' in line " +
+               std::to_string(prevToken->lineno) + "."))
+            ));
+
+            delete this->lexer;
+            exit(0);
         }
     }
 

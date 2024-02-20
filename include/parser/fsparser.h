@@ -3,7 +3,7 @@
 #ifndef FUSIONC_FS_PARSER_H
 #define FUSIONC_FS_PARSER_H
 
-#include "fsparser_deps.h"
+#include "fscstnodes.h"
 
 using namespace fsparser_deps;
 
